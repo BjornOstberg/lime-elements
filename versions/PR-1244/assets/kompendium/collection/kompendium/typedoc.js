@@ -3,6 +3,7 @@ import negate from 'lodash/negate';
 import { existsSync } from 'fs';
 export function parseFile(filename) {
   if (!existsSync(filename)) {
+    // eslint-disable-next-line no-console
     console.warn('typeRoot file does not exist', filename);
     return [];
   }
@@ -17,6 +18,7 @@ export function parseFile(filename) {
   app.bootstrap(options);
   const reflection = app.convert([filename]);
   if (!reflection) {
+    // eslint-disable-next-line no-console
     console.warn('Could not find any type information');
     return [];
   }

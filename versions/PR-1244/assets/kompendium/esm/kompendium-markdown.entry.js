@@ -3120,19 +3120,19 @@ function setOptions(options) {
   return self
 }
 
-var convert_1$4 = convert$4;
+var convert_1$1 = convert$1;
 
-function convert$4(test) {
+function convert$1(test) {
   if (typeof test === 'string') {
-    return typeFactory$4(test)
+    return typeFactory$1(test)
   }
 
   if (test === null || test === undefined) {
-    return ok$4
+    return ok$1
   }
 
   if (typeof test === 'object') {
-    return ('length' in test ? anyFactory$4 : matchesFactory$4)(test)
+    return ('length' in test ? anyFactory$1 : matchesFactory$1)(test)
   }
 
   if (typeof test === 'function') {
@@ -3142,13 +3142,13 @@ function convert$4(test) {
   throw new Error('Expected function, string, or object as test')
 }
 
-function convertAll$4(tests) {
+function convertAll$1(tests) {
   var results = [];
   var length = tests.length;
   var index = -1;
 
   while (++index < length) {
-    results[index] = convert$4(tests[index]);
+    results[index] = convert$1(tests[index]);
   }
 
   return results
@@ -3156,7 +3156,7 @@ function convertAll$4(tests) {
 
 // Utility assert each property in `test` is represented in `node`, and each
 // values are strictly equal.
-function matchesFactory$4(test) {
+function matchesFactory$1(test) {
   return matches
 
   function matches(node) {
@@ -3172,8 +3172,8 @@ function matchesFactory$4(test) {
   }
 }
 
-function anyFactory$4(tests) {
-  var checks = convertAll$4(tests);
+function anyFactory$1(tests) {
+  var checks = convertAll$1(tests);
   var length = checks.length;
 
   return matches
@@ -3193,7 +3193,7 @@ function anyFactory$4(tests) {
 
 // Utility to convert a string into a function which checks a given node’s type
 // for said string.
-function typeFactory$4(test) {
+function typeFactory$1(test) {
   return type
 
   function type(node) {
@@ -3202,23 +3202,23 @@ function typeFactory$4(test) {
 }
 
 // Utility to return true.
-function ok$4() {
+function ok$1() {
   return true
 }
 
-var unistUtilVisitParents$2 = visitParents$2;
+var unistUtilVisitParents = visitParents;
 
 
 
-var CONTINUE$5 = true;
-var SKIP$5 = 'skip';
-var EXIT$5 = false;
+var CONTINUE$1 = true;
+var SKIP$1 = 'skip';
+var EXIT$1 = false;
 
-visitParents$2.CONTINUE = CONTINUE$5;
-visitParents$2.SKIP = SKIP$5;
-visitParents$2.EXIT = EXIT$5;
+visitParents.CONTINUE = CONTINUE$1;
+visitParents.SKIP = SKIP$1;
+visitParents.EXIT = EXIT$1;
 
-function visitParents$2(tree, test, visitor, reverse) {
+function visitParents(tree, test, visitor, reverse) {
   var is;
 
   if (typeof test === 'function' && typeof visitor !== 'function') {
@@ -3227,7 +3227,7 @@ function visitParents$2(tree, test, visitor, reverse) {
     test = null;
   }
 
-  is = convert_1$4(test);
+  is = convert_1$1(test);
 
   one(tree, null, []);
 
@@ -3237,16 +3237,16 @@ function visitParents$2(tree, test, visitor, reverse) {
     var subresult;
 
     if (!test || is(node, index, parents[parents.length - 1] || null)) {
-      result = toResult$2(visitor(node, parents));
+      result = toResult(visitor(node, parents));
 
-      if (result[0] === EXIT$5) {
+      if (result[0] === EXIT$1) {
         return result
       }
     }
 
-    if (node.children && result[0] !== SKIP$5) {
-      subresult = toResult$2(all(node.children, parents.concat(node)));
-      return subresult[0] === EXIT$5 ? subresult : result
+    if (node.children && result[0] !== SKIP$1) {
+      subresult = toResult(all(node.children, parents.concat(node)));
+      return subresult[0] === EXIT$1 ? subresult : result
     }
 
     return result
@@ -3262,7 +3262,7 @@ function visitParents$2(tree, test, visitor, reverse) {
     while (index > min && index < children.length) {
       result = one(children[index], index, parents);
 
-      if (result[0] === EXIT$5) {
+      if (result[0] === EXIT$1) {
         return result
       }
 
@@ -3271,38 +3271,38 @@ function visitParents$2(tree, test, visitor, reverse) {
   }
 }
 
-function toResult$2(value) {
+function toResult(value) {
   if (value !== null && typeof value === 'object' && 'length' in value) {
     return value
   }
 
   if (typeof value === 'number') {
-    return [CONTINUE$5, value]
+    return [CONTINUE$1, value]
   }
 
   return [value]
 }
 
-var unistUtilVisit$2 = visit$2;
+var unistUtilVisit = visit;
 
 
 
-var CONTINUE$4 = unistUtilVisitParents$2.CONTINUE;
-var SKIP$4 = unistUtilVisitParents$2.SKIP;
-var EXIT$4 = unistUtilVisitParents$2.EXIT;
+var CONTINUE = unistUtilVisitParents.CONTINUE;
+var SKIP = unistUtilVisitParents.SKIP;
+var EXIT = unistUtilVisitParents.EXIT;
 
-visit$2.CONTINUE = CONTINUE$4;
-visit$2.SKIP = SKIP$4;
-visit$2.EXIT = EXIT$4;
+visit.CONTINUE = CONTINUE;
+visit.SKIP = SKIP;
+visit.EXIT = EXIT;
 
-function visit$2(tree, test, visitor, reverse) {
+function visit(tree, test, visitor, reverse) {
   if (typeof test === 'function' && typeof visitor !== 'function') {
     reverse = visitor;
     visitor = test;
     test = null;
   }
 
-  unistUtilVisitParents$2(tree, test, overload, reverse);
+  unistUtilVisitParents(tree, test, overload, reverse);
 
   function overload(node, parents) {
     var parent = parents[parents.length - 1];
@@ -3314,7 +3314,7 @@ function visit$2(tree, test, visitor, reverse) {
 var unistUtilRemovePosition = removePosition;
 
 function removePosition(node, force) {
-  unistUtilVisit$2(node, force ? hard : soft);
+  unistUtilVisit(node, force ? hard : soft);
   return node
 }
 
@@ -22130,197 +22130,6 @@ function replacer($0) {
   return $0.charAt(1).toUpperCase()
 }
 
-var convert_1$3 = convert$3;
-
-function convert$3(test) {
-  if (typeof test === 'string') {
-    return typeFactory$3(test)
-  }
-
-  if (test === null || test === undefined) {
-    return ok$3
-  }
-
-  if (typeof test === 'object') {
-    return ('length' in test ? anyFactory$3 : matchesFactory$3)(test)
-  }
-
-  if (typeof test === 'function') {
-    return test
-  }
-
-  throw new Error('Expected function, string, or object as test')
-}
-
-function convertAll$3(tests) {
-  var results = [];
-  var length = tests.length;
-  var index = -1;
-
-  while (++index < length) {
-    results[index] = convert$3(tests[index]);
-  }
-
-  return results
-}
-
-// Utility assert each property in `test` is represented in `node`, and each
-// values are strictly equal.
-function matchesFactory$3(test) {
-  return matches
-
-  function matches(node) {
-    var key;
-
-    for (key in test) {
-      if (node[key] !== test[key]) {
-        return false
-      }
-    }
-
-    return true
-  }
-}
-
-function anyFactory$3(tests) {
-  var checks = convertAll$3(tests);
-  var length = checks.length;
-
-  return matches
-
-  function matches() {
-    var index = -1;
-
-    while (++index < length) {
-      if (checks[index].apply(this, arguments)) {
-        return true
-      }
-    }
-
-    return false
-  }
-}
-
-// Utility to convert a string into a function which checks a given node’s type
-// for said string.
-function typeFactory$3(test) {
-  return type
-
-  function type(node) {
-    return Boolean(node && node.type === test)
-  }
-}
-
-// Utility to return true.
-function ok$3() {
-  return true
-}
-
-var unistUtilVisitParents$1 = visitParents$1;
-
-
-
-var CONTINUE$3 = true;
-var SKIP$3 = 'skip';
-var EXIT$3 = false;
-
-visitParents$1.CONTINUE = CONTINUE$3;
-visitParents$1.SKIP = SKIP$3;
-visitParents$1.EXIT = EXIT$3;
-
-function visitParents$1(tree, test, visitor, reverse) {
-  var is;
-
-  if (typeof test === 'function' && typeof visitor !== 'function') {
-    reverse = visitor;
-    visitor = test;
-    test = null;
-  }
-
-  is = convert_1$3(test);
-
-  one(tree, null, []);
-
-  // Visit a single node.
-  function one(node, index, parents) {
-    var result = [];
-    var subresult;
-
-    if (!test || is(node, index, parents[parents.length - 1] || null)) {
-      result = toResult$1(visitor(node, parents));
-
-      if (result[0] === EXIT$3) {
-        return result
-      }
-    }
-
-    if (node.children && result[0] !== SKIP$3) {
-      subresult = toResult$1(all(node.children, parents.concat(node)));
-      return subresult[0] === EXIT$3 ? subresult : result
-    }
-
-    return result
-  }
-
-  // Visit children in `parent`.
-  function all(children, parents) {
-    var min = -1;
-    var step = reverse ? -1 : 1;
-    var index = (reverse ? children.length : min) + step;
-    var result;
-
-    while (index > min && index < children.length) {
-      result = one(children[index], index, parents);
-
-      if (result[0] === EXIT$3) {
-        return result
-      }
-
-      index = typeof result[1] === 'number' ? result[1] : index + step;
-    }
-  }
-}
-
-function toResult$1(value) {
-  if (value !== null && typeof value === 'object' && 'length' in value) {
-    return value
-  }
-
-  if (typeof value === 'number') {
-    return [CONTINUE$3, value]
-  }
-
-  return [value]
-}
-
-var unistUtilVisit$1 = visit$1;
-
-
-
-var CONTINUE$2 = unistUtilVisitParents$1.CONTINUE;
-var SKIP$2 = unistUtilVisitParents$1.SKIP;
-var EXIT$2 = unistUtilVisitParents$1.EXIT;
-
-visit$1.CONTINUE = CONTINUE$2;
-visit$1.SKIP = SKIP$2;
-visit$1.EXIT = EXIT$2;
-
-function visit$1(tree, test, visitor, reverse) {
-  if (typeof test === 'function' && typeof visitor !== 'function') {
-    reverse = visitor;
-    visitor = test;
-    test = null;
-  }
-
-  unistUtilVisitParents$1(tree, test, overload, reverse);
-
-  function overload(node, parents) {
-    var parent = parents[parents.length - 1];
-    var index = parent ? parent.children.indexOf(node) : null;
-    return visitor(node, index, parent)
-  }
-}
-
 // handles different types of whitespace
 
 
@@ -22560,7 +22369,7 @@ var lib$2 = function attacher(options) {
 
   return function transformer(tree) {
     // escape everything except admonitionHTML nodes
-    unistUtilVisit$1(
+    unistUtilVisit(
       tree,
       node => {
         return node.type !== "admonitionHTML";
@@ -22595,197 +22404,6 @@ function u(type, props, value) {
   }
 
   return node
-}
-
-var convert_1$2 = convert$2;
-
-function convert$2(test) {
-  if (typeof test === 'string') {
-    return typeFactory$2(test)
-  }
-
-  if (test === null || test === undefined) {
-    return ok$2
-  }
-
-  if (typeof test === 'object') {
-    return ('length' in test ? anyFactory$2 : matchesFactory$2)(test)
-  }
-
-  if (typeof test === 'function') {
-    return test
-  }
-
-  throw new Error('Expected function, string, or object as test')
-}
-
-function convertAll$2(tests) {
-  var results = [];
-  var length = tests.length;
-  var index = -1;
-
-  while (++index < length) {
-    results[index] = convert$2(tests[index]);
-  }
-
-  return results
-}
-
-// Utility assert each property in `test` is represented in `node`, and each
-// values are strictly equal.
-function matchesFactory$2(test) {
-  return matches
-
-  function matches(node) {
-    var key;
-
-    for (key in test) {
-      if (node[key] !== test[key]) {
-        return false
-      }
-    }
-
-    return true
-  }
-}
-
-function anyFactory$2(tests) {
-  var checks = convertAll$2(tests);
-  var length = checks.length;
-
-  return matches
-
-  function matches() {
-    var index = -1;
-
-    while (++index < length) {
-      if (checks[index].apply(this, arguments)) {
-        return true
-      }
-    }
-
-    return false
-  }
-}
-
-// Utility to convert a string into a function which checks a given node’s type
-// for said string.
-function typeFactory$2(test) {
-  return type
-
-  function type(node) {
-    return Boolean(node && node.type === test)
-  }
-}
-
-// Utility to return true.
-function ok$2() {
-  return true
-}
-
-var unistUtilVisitParents = visitParents;
-
-
-
-var CONTINUE$1 = true;
-var SKIP$1 = 'skip';
-var EXIT$1 = false;
-
-visitParents.CONTINUE = CONTINUE$1;
-visitParents.SKIP = SKIP$1;
-visitParents.EXIT = EXIT$1;
-
-function visitParents(tree, test, visitor, reverse) {
-  var is;
-
-  if (typeof test === 'function' && typeof visitor !== 'function') {
-    reverse = visitor;
-    visitor = test;
-    test = null;
-  }
-
-  is = convert_1$2(test);
-
-  one(tree, null, []);
-
-  // Visit a single node.
-  function one(node, index, parents) {
-    var result = [];
-    var subresult;
-
-    if (!test || is(node, index, parents[parents.length - 1] || null)) {
-      result = toResult(visitor(node, parents));
-
-      if (result[0] === EXIT$1) {
-        return result
-      }
-    }
-
-    if (node.children && result[0] !== SKIP$1) {
-      subresult = toResult(all(node.children, parents.concat(node)));
-      return subresult[0] === EXIT$1 ? subresult : result
-    }
-
-    return result
-  }
-
-  // Visit children in `parent`.
-  function all(children, parents) {
-    var min = -1;
-    var step = reverse ? -1 : 1;
-    var index = (reverse ? children.length : min) + step;
-    var result;
-
-    while (index > min && index < children.length) {
-      result = one(children[index], index, parents);
-
-      if (result[0] === EXIT$1) {
-        return result
-      }
-
-      index = typeof result[1] === 'number' ? result[1] : index + step;
-    }
-  }
-}
-
-function toResult(value) {
-  if (value !== null && typeof value === 'object' && 'length' in value) {
-    return value
-  }
-
-  if (typeof value === 'number') {
-    return [CONTINUE$1, value]
-  }
-
-  return [value]
-}
-
-var unistUtilVisit = visit;
-
-
-
-var CONTINUE = unistUtilVisitParents.CONTINUE;
-var SKIP = unistUtilVisitParents.SKIP;
-var EXIT = unistUtilVisitParents.EXIT;
-
-visit.CONTINUE = CONTINUE;
-visit.SKIP = SKIP;
-visit.EXIT = EXIT;
-
-function visit(tree, test, visitor, reverse) {
-  if (typeof test === 'function' && typeof visitor !== 'function') {
-    reverse = visitor;
-    visitor = test;
-    test = null;
-  }
-
-  unistUtilVisitParents(tree, test, overload, reverse);
-
-  function overload(node, parents) {
-    var parent = parents[parents.length - 1];
-    var index = parent ? parent.children.indexOf(node) : null;
-    return visitor(node, index, parent)
-  }
 }
 
 var start = factory$2('start');
@@ -31863,19 +31481,19 @@ function StyleToObject(style, iterator) {
 
 var styleToObject = StyleToObject;
 
-var convert_1$1 = convert$1;
+var convert_1 = convert;
 
-function convert$1(test) {
+function convert(test) {
   if (typeof test === 'string') {
-    return typeFactory$1(test)
+    return typeFactory(test)
   }
 
   if (test === null || test === undefined) {
-    return ok$1
+    return ok
   }
 
   if (typeof test === 'object') {
-    return ('length' in test ? anyFactory$1 : matchesFactory$1)(test)
+    return ('length' in test ? anyFactory : matchesFactory)(test)
   }
 
   if (typeof test === 'function') {
@@ -31885,13 +31503,13 @@ function convert$1(test) {
   throw new Error('Expected function, string, or object as test')
 }
 
-function convertAll$1(tests) {
+function convertAll(tests) {
   var results = [];
   var length = tests.length;
   var index = -1;
 
   while (++index < length) {
-    results[index] = convert$1(tests[index]);
+    results[index] = convert(tests[index]);
   }
 
   return results
@@ -31899,7 +31517,7 @@ function convertAll$1(tests) {
 
 // Utility assert each property in `test` is represented in `node`, and each
 // values are strictly equal.
-function matchesFactory$1(test) {
+function matchesFactory(test) {
   return matches
 
   function matches(node) {
@@ -31915,8 +31533,8 @@ function matchesFactory$1(test) {
   }
 }
 
-function anyFactory$1(tests) {
-  var checks = convertAll$1(tests);
+function anyFactory(tests) {
+  var checks = convertAll(tests);
   var length = checks.length;
 
   return matches
@@ -31936,7 +31554,7 @@ function anyFactory$1(tests) {
 
 // Utility to convert a string into a function which checks a given node’s type
 // for said string.
-function typeFactory$1(test) {
+function typeFactory(test) {
   return type
 
   function type(node) {
@@ -31945,13 +31563,13 @@ function typeFactory$1(test) {
 }
 
 // Utility to return true.
-function ok$1() {
+function ok() {
   return true
 }
 
-var root$1 = convert_1$1('root');
-var element$2 = convert_1$1('element');
-var text$2 = convert_1$1('text');
+var root$1 = convert_1('root');
+var element$2 = convert_1('element');
+var text$2 = convert_1('text');
 
 var dashes = /-([a-z])/g;
 
@@ -32668,92 +32286,6 @@ function raw$1() {
   return hastUtilRaw
 }
 
-var convert_1 = convert;
-
-function convert(test) {
-  if (typeof test === 'string') {
-    return typeFactory(test)
-  }
-
-  if (test === null || test === undefined) {
-    return ok
-  }
-
-  if (typeof test === 'object') {
-    return ('length' in test ? anyFactory : matchesFactory)(test)
-  }
-
-  if (typeof test === 'function') {
-    return test
-  }
-
-  throw new Error('Expected function, string, or object as test')
-}
-
-function convertAll(tests) {
-  var results = [];
-  var length = tests.length;
-  var index = -1;
-
-  while (++index < length) {
-    results[index] = convert(tests[index]);
-  }
-
-  return results
-}
-
-// Utility assert each property in `test` is represented in `node`, and each
-// values are strictly equal.
-function matchesFactory(test) {
-  return matches
-
-  function matches(node) {
-    var key;
-
-    for (key in test) {
-      if (node[key] !== test[key]) {
-        return false
-      }
-    }
-
-    return true
-  }
-}
-
-function anyFactory(tests) {
-  var checks = convertAll(tests);
-  var length = checks.length;
-
-  return matches
-
-  function matches() {
-    var index = -1;
-
-    while (++index < length) {
-      if (checks[index].apply(this, arguments)) {
-        return true
-      }
-    }
-
-    return false
-  }
-}
-
-// Utility to convert a string into a function which checks a given node’s type
-// for said string.
-function typeFactory(test) {
-  return type
-
-  function type(node) {
-    return Boolean(node && node.type === test)
-  }
-}
-
-// Utility to return true.
-function ok() {
-  return true
-}
-
 var hastUtilIsElement = isElement;
 
 // Check if if `node` is an `element` and, if `tagNames` is given, `node`
@@ -32865,7 +32397,7 @@ function place(parent, child) {
 
 var whiteSpaceStart_1 = whiteSpaceStart;
 
-var isText = convert_1('text');
+var isText = convert_1$1('text');
 
 // Check if `node` starts with white-space.
 function whiteSpaceStart(node) {
@@ -32893,7 +32425,7 @@ function omission$1(handlers) {
 var after = siblings_1.after;
 
 
-var isComment$1 = convert_1('comment');
+var isComment$1 = convert_1$1('comment');
 
 var optionGroup = 'optgroup';
 var options = ['option'].concat(optionGroup);
@@ -33075,7 +32607,7 @@ var before = siblings_1.before;
 
 
 
-var isComment = convert_1('comment');
+var isComment = convert_1$1('comment');
 
 var uniqueHeadMetadata = ['title', 'base'];
 var meta = ['meta', 'link', 'script', 'style', 'template'];
@@ -34375,7 +33907,7 @@ function saveFrontmatter() {
   return transformer$2;
 }
 function transformer$2(tree, file) {
-  return unistUtilVisit$1(tree, 'yaml', storeData(file));
+  return unistUtilVisit(tree, 'yaml', storeData(file));
 }
 const storeData = (file) => (item) => {
   file.data.frontmatter = item.data.parsedValue;
@@ -34419,14 +33951,9 @@ function mapCodeNode$1(node) {
   if (!language) {
     return node;
   }
-  return Object.assign({}, node, {
-    type: 'element',
-    tagName: 'kompendium-code',
-    properties: {
+  return Object.assign(Object.assign({}, node), { type: 'element', tagName: 'kompendium-code', properties: {
       language: language,
-    },
-    children: [],
-  });
+    }, children: [] });
 }
 function getLanguage(props) {
   if (!props) {

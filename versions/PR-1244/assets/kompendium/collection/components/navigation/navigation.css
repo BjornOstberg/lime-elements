@@ -195,7 +195,7 @@ header a {
     box-shadow: 0 0.09375rem 0.225rem 0 rgba(0, 0, 0, 0.232), 0 0.01875rem 0.05625rem 0 rgba(0, 0, 0, 0.208);
   }
   .nav-panel.display-nav-panel .nav-panel__responsive-menu {
-    right: calc((var(--size-show-nav-panel-button) * -1) - 0.3125rem);
+    right: calc( (var(--size-show-nav-panel-button) * -1) - 0.3125rem );
     border-radius: 0 0.5rem 0.5rem 0;
   }
   .nav-panel.display-nav-panel .nav-panel__responsive-menu span:nth-child(1), .nav-panel.display-nav-panel .nav-panel__responsive-menu span:nth-child(4) {

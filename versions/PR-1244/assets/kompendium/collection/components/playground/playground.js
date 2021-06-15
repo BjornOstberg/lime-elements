@@ -11,7 +11,7 @@ export class Playground {
     if (!this.component) {
       return;
     }
-    const sources = this.component['sources'] || [];
+    const sources = this.component.sources || [];
     return (h("section", { class: "example" },
       h("div", { class: "result" }, this.renderResult()),
       h("aside", { class: "code" },

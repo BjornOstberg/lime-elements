@@ -3,7 +3,7 @@
 const index = require('./index-05806c6d.js');
 
 /*
- Stencil Client Patch Browser v2.5.2 | MIT Licensed | https://stenciljs.com
+ Stencil Client Patch Browser v2.6.0 | MIT Licensed | https://stenciljs.com
  */
 const patchBrowser = () => {
     const importMeta = (typeof document === 'undefined' ? new (require('u' + 'rl').URL)('file:' + __filename).href : (document.currentScript && document.currentScript.src || new URL('kompendium.cjs.js', document.baseURI).href));

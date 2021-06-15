@@ -16,14 +16,9 @@ function mapCodeNode(node) {
   if (!language) {
     return node;
   }
-  return Object.assign({}, node, {
-    type: 'element',
-    tagName: 'kompendium-code',
-    properties: {
+  return Object.assign(Object.assign({}, node), { type: 'element', tagName: 'kompendium-code', properties: {
       language: language,
-    },
-    children: [],
-  });
+    }, children: [] });
 }
 function getLanguage(props) {
   if (!props) {

@@ -5,7 +5,6 @@ import { TypeDescription } from '../types';
  *
  * @param {JsonDocsComponent[]} components the components
  * @param {TypeDescription[]} types type definitions
- *
  * @returns {*} list of schemas for the components
  */
 export declare function createSchemas(components: JsonDocsComponent[], types: TypeDescription[]): Array<Record<string, any>>;
