@@ -110,6 +110,7 @@ function createAliasDocument(item, type) {
     text: type.docs,
   };
 }
+// eslint-disable-next-line sonarjs/no-identical-functions
 function createEnumDocument(item, type) {
   return {
     path: item.path,

@@ -19,7 +19,7 @@ const Playground = class {
     if (!this.component) {
       return;
     }
-    const sources = this.component['sources'] || [];
+    const sources = this.component.sources || [];
     return (index.h("section", { class: "example" }, index.h("div", { class: "result" }, this.renderResult()), index.h("aside", { class: "code" }, index.h("nav", { class: "tab-bar" }, this.renderTabs(sources)), index.h("div", { class: "tab-items" }, this.renderItems(sources)))));
   }
   renderTabs(sources) {

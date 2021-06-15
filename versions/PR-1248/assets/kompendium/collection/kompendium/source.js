@@ -3,7 +3,7 @@ import { extname, join } from 'path';
 export async function addSources(docs) {
   var _a;
   const components = await Promise.all(((_a = docs.components) === null || _a === void 0 ? void 0 : _a.map(addComponentSources)) || []);
-  return Object.assign(Object.assign({}, docs), { components });
+  return Object.assign(Object.assign({}, docs), { components: components });
 }
 export async function addComponentSources(component) {
   const sources = await getSources(component);
@@ -18,7 +18,7 @@ export async function getSources(component) {
     {
       filename: component.fileName,
       type: 'tsx',
-      source,
+      source: source,
     },
     ...styles,
     ...links,

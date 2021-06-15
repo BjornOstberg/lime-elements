@@ -11,7 +11,6 @@ const ID_PATTERN = /^number \| string$|string \| number$/g;
  *
  * @param {JsonDocsComponent[]} components the components
  * @param {TypeDescription[]} types type definitions
- *
  * @returns {*} list of schemas for the components
  */
 export function createSchemas(components, types) {
