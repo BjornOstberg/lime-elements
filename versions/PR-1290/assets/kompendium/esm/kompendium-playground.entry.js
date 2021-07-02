@@ -45,7 +45,8 @@ const Playground = class {
       active: this.isTabActive(source, index),
     };
     const code = source.source.replace(/\/\*\*.+?\*\//gms, '');
-    return (h("kompendium-code", { class: classList, language: source.type }, code));
+    const key = [this.component.tag, source.filename].join('/');
+    return (h("kompendium-code", { class: classList, language: source.type, key: key }, code));
   }
   renderDebugButton(tag) {
     if (!['localhost', '127.0.0.1'].includes(location.hostname)) {
