@@ -19,7 +19,7 @@ const Playground = class {
     if (!this.component) {
       return;
     }
-    const sources = this.component['sources'] || [];
+    const sources = this.component.sources || [];
     return (index.h("section", { class: "example" }, index.h("div", { class: "result" }, this.renderResult()), index.h("aside", { class: "code" }, index.h("nav", { class: "tab-bar" }, this.renderTabs(sources)), index.h("div", { class: "tab-items" }, this.renderItems(sources)))));
   }
   renderTabs(sources) {
@@ -49,7 +49,8 @@ const Playground = class {
       active: this.isTabActive(source, index$1),
     };
     const code = source.source.replace(/\/\*\*.+?\*\//gms, '');
-    return (index.h("kompendium-code", { class: classList, language: source.type }, code));
+    const key = [this.component.tag, source.filename].join('/');
+    return (index.h("kompendium-code", { class: classList, language: source.type, key: key }, code));
   }
   renderDebugButton(tag) {
     if (!['localhost', '127.0.0.1'].includes(location.hostname)) {
