@@ -78,6 +78,16 @@ header a {
   color: unset;
 }
 
+.nav-panel-scrim {
+  display: none;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .nav-panel {
   transition: margin 0.2s ease;
   z-index: 100;
@@ -187,6 +197,10 @@ header a {
 }
 
 @media (max-width: 1400px) {
+  .nav-panel-scrim.display-nav-panel {
+    display: block;
+  }
+
   .nav-panel {
     margin-left: calc(var(--width-nav-panel) * -1);
   }
@@ -235,9 +249,13 @@ header a {
   transform: rotate(90deg) scale(0.8);
 }
 .panel-link img {
+  visibility: hidden;
   transition: transform 0.2s ease;
   transform: scale(0.8);
   height: 2rem;
+}
+.panel-link.has-children img {
+  visibility: visible;
 }
 
 .link-text {
@@ -299,7 +317,7 @@ header a {
 .chapters.active .panel-item:last-child {
   margin-bottom: 1rem;
 }
-.chapters img {
+.chapters .panel-link.has-children img {
   visibility: hidden;
 }
 .chapters .panel-item {

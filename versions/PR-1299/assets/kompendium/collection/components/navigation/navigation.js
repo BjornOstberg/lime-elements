@@ -1,16 +1,16 @@
-import { Component, h, Prop, State, getAssetPath, Element, } from '@stencil/core';
+import { Component, h, Prop, State, getAssetPath } from '@stencil/core';
 /**
  * @private
  */
 export class Navigation {
   constructor() {
     this.route = '';
+    this.displayNavPanel = false;
     this.toggleMenu = () => {
-      const panel = this.host.shadowRoot.querySelector('.nav-panel');
-      if (!panel) {
-        return;
-      }
-      panel.classList.toggle('display-nav-panel');
+      this.displayNavPanel = !this.displayNavPanel;
+    };
+    this.stopPropagationOfNavClick = (event) => {
+      event.stopPropagation();
     };
     this.setRoute = this.setRoute.bind(this);
     this.renderMenuItem = this.renderMenuItem.bind(this);
@@ -26,16 +26,25 @@ export class Navigation {
     this.route = location.hash.substr(1);
   }
   render() {
-    return (h("nav", { class: "nav-panel" },
-      h("a", { class: "nav-panel__responsive-menu", onClick: this.toggleMenu },
-        h("span", null),
-        h("span", null),
-        h("span", null),
-        h("span", null)),
-      h("header", { class: "panel-header" },
-        h("h1", null, this.renderHeader()),
-        h("kompendium-search", { index: this.index })),
-      this.renderChapters(this.menu)));
+    return [
+      h("div", { class: {
+          'nav-panel-scrim': true,
+          'display-nav-panel': this.displayNavPanel,
+        }, onClick: this.toggleMenu }),
+      h("nav", { class: {
+          'nav-panel': true,
+          'display-nav-panel': this.displayNavPanel,
+        }, onClick: this.stopPropagationOfNavClick },
+        h("a", { class: "nav-panel__responsive-menu", onClick: this.toggleMenu },
+          h("span", null),
+          h("span", null),
+          h("span", null),
+          h("span", null)),
+        h("header", { class: "panel-header" },
+          h("h1", null, this.renderHeader()),
+          h("kompendium-search", { index: this.index })),
+        this.renderChapters(this.menu)),
+    ];
   }
   renderHeader() {
     let content = this.header;
@@ -61,14 +70,19 @@ export class Navigation {
       chapters: true,
       'panel-list': true,
     };
+    const chapters = item.children || [];
     const anchorClassList = {
       'panel-link': true,
       active: this.isRouteActive(item.path),
+      'has-children': !!chapters.length,
     };
-    const chapters = item.children || [];
     const path = getAssetPath('../collection/assets/icons/arrow-right-s-line.svg');
+    const anchorAdditionalProps = {};
+    if (!chapters.length) {
+      anchorAdditionalProps.onClick = this.toggleMenu;
+    }
     return (h("li", { class: "panel-item" },
-      h("a", { class: anchorClassList, href: '#' + item.path },
+      h("a", Object.assign({ class: anchorClassList, href: '#' + item.path }, anchorAdditionalProps),
         h("img", { src: path }),
         h("span", { class: "link-text" }, item.title)),
       h("ul", { class: classList }, chapters.map(this.renderMenuItem))));
@@ -158,9 +172,9 @@ export class Navigation {
     }
   }; }
   static get states() { return {
-    "route": {}
+    "route": {},
+    "displayNavPanel": {}
   }; }
-  static get elementRef() { return "host"; }
 }
 // function hasContent(item: MenuItem) {
 //     return item.children?.length > 0;
