@@ -1,4 +1,4 @@
-import { r as registerInstance, h, a as getElement } from './index-69abe4cb.js';
+import { r as registerInstance, h, g as getElement } from './index-a0810d83.js';
 import { a as createCommonjsModule, c as commonjsGlobal } from './_commonjsHelpers-73699516.js';
 
 var prism = createCommonjsModule(function (module) {
