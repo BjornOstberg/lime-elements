@@ -1,0 +1,7 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+    <path fill="rgb(var(--color-teal-light))" fill-rule="nonzero" d="M5.227 15.27c0-6.025 4.892-10.917 10.917-10.917 6.026 0 10.918 4.892 10.918 10.917 0 3.134-1.308 6.355-4.533 9.032-3.909 3.245-9.15 3.688-17.254 3.153-2.406-.159-2.754-.57-1.511-1.487 3.907-2.884 1.463-5.09 1.463-10.698z"/>
+    <circle fill="rgb(var(--color-green-light))" fill-rule="nonzero" cx="40.351" cy="68.351" r="20.649" transform="matrix(.4661 0 0 .4661 -2.597 -16.69)"/>
+    <circle fill="rgb(var(--color-sky-light))" fill-rule="nonzero" cx="40.351" cy="68.351" r="20.649" transform="translate(1.101 1.366) scale(.09298)"/>
+    <circle fill="rgb(var(--color-magenta-default))" fill-rule="nonzero" cx="40.351" cy="68.351" r="20.649" transform="translate(21.86 -1.172) scale(.08265)"/>
+    <circle fill="rgb(var(--color-amber-default))" fill-rule="nonzero" cx="40.351" cy="68.351" r="20.649" transform="matrix(.14975 0 0 .14975 17.69 11.99)"/>
+</svg>
