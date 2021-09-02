@@ -1,6 +1,6 @@
 /* eslint-env node */
 module.exports = {
-    branches: ['main'],
+    branches: ['main', { name: 'next', prerelease: true }],
     plugins: [
         [
             '@semantic-release/commit-analyzer',
