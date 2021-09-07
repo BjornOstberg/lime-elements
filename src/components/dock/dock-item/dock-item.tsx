@@ -27,18 +27,6 @@ export class DockItemMenu {
     public item: DockItem = null;
 
     /**
-     * True if the flow item should be disabled
-     */
-    @Prop()
-    public disabled = false;
-
-    /**
-     * True if the flow item should be readonly
-     */
-    @Prop()
-    public readonly = false;
-
-    /**
      * Fired when clicking on the flow item
      */
     @Event()
@@ -57,11 +45,10 @@ export class DockItemMenu {
                 class={{
                     step: true,
                     selected: this.item?.selected,
-                    disabled: this.isDisabled(),
-                    readonly: this.readonly,
+
                 }}
                 onClick={this.handleClick}
-                disabled={this.isDisabled()}
+
             >
                 {this.renderIcon()}
                 <span class="text">{this.item.text}</span>
@@ -71,9 +58,7 @@ export class DockItemMenu {
         ];
     }
 
-    private isDisabled() {
-        return this.item?.disabled || this.readonly || this.disabled;
-    }
+   
 
     private getToolTipText() {
         if (!this.item.secondaryText) {

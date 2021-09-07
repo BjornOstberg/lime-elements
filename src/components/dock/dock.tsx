@@ -28,25 +28,6 @@ export class Dock {
     public dockItems: DockItem[] = [];
 
     /**
-     * Set to `true` to disable the progress flow.
-     * Use `disabled` to indicate that the component can normally be interacted
-     * with, but is currently disabled. This tells the user that if certain
-     * requirements are met, the field may become enabled again.
-     */
-    @Prop()
-    public disabled = false;
-
-    /**
-     * Disables the progress flow when `true`.
-     * This does not visualize the component that much differently.
-     * But since the component does not provide any feedback that users can
-     * interact with the component, it makes it perfect for illustrative and
-     * informative porpuses.
-     */
-    @Prop()
-    public readonly = false;
-
-    /**
      * Fired when a new value has been selected from the progress flow
      */
     @Event()
@@ -90,8 +71,7 @@ export class Dock {
                     selected: item.selected,
                 }}
                 style={this.getItemStyle(item)}
-                disabled={this.disabled || this.readonly}
-                readonly={this.readonly}
+
                 item={item}
                 onInteract={this.handleDockItemClick(item)}
             />
@@ -113,8 +93,7 @@ export class Dock {
                     'last-off-progress-item': index === array.length - 1,
                 }}
                 style={this.getItemStyle(item)}
-                disabled={this.disabled || this.readonly}
-                readonly={this.readonly}
+
                 item={item}
                 onInteract={this.handleDockItemClick(item)}
             />
@@ -122,7 +101,7 @@ export class Dock {
     };
 
     private handleDockItemClick = (dockItem: DockItem) => () => {
-        if (!dockItem.selected && !dockItem.disabled && !this.disabled) {
+        if (!dockItem.selected ) {
             this.change.emit(dockItem);
         }
     };
