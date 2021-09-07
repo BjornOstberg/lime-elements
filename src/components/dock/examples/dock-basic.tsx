@@ -9,7 +9,6 @@ import { DockItem } from '../dock.types';
     shadow: true,
 })
 export class DockBasicExample {
-
     @State()
     private dockItems: DockItem[] = [
         {
@@ -34,6 +33,7 @@ export class DockBasicExample {
         {
             value: 'agreement',
             text: 'Agreement',
+            isOffProgress: true,
             selectedColor: 'rgb(var(--color-teal-default))',
             icon: 'agreement',
         },
@@ -60,7 +60,6 @@ export class DockBasicExample {
             <limel-dock
                 dockItems={this.dockItems}
                 onChange={this.handleChange}
-
             />,
 
             <limel-example-value

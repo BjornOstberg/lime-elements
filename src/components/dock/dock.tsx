@@ -62,7 +62,7 @@ export class Dock {
         array: DockItem[]
     ) => {
         return (
-            <limel-progress-flow-item
+            <limel-dock-item
                 class={{
                     'flow-item': true,
                     first: index === 0,
@@ -84,7 +84,7 @@ export class Dock {
         array: DockItem[]
     ) => {
         return (
-            <limel-progress-flow-item
+            <limel-dock-item
                 class={{
                     'flow-item': true,
                     'off-progress-item': true,
