@@ -9,17 +9,12 @@ import { DockItem } from '../dock.types';
     shadow: true,
 })
 export class DockBasicExample {
-    @State()
-    private disabled = false;
-
-    @State()
-    private readonly = false;
 
     @State()
     private dockItems: DockItem[] = [
         {
             value: 'contact',
-            text: 'Customer contact',
+            text: 'Customer contact', // btn name
             selectedColor: 'rgb(var(--color-orange-default))',
             selected: true,
             icon: 'meeting',
@@ -65,21 +60,9 @@ export class DockBasicExample {
             <limel-dock
                 dockItems={this.dockItems}
                 onChange={this.handleChange}
-                disabled={this.disabled}
-                readonly={this.readonly}
+
             />,
-            <limel-flex-container justify="end">
-                <limel-checkbox
-                    checked={this.disabled}
-                    label="Disabled"
-                    onChange={this.setDisabled}
-                />
-                <limel-checkbox
-                    checked={this.readonly}
-                    label="Readonly"
-                    onChange={this.setReadonly}
-                />
-            </limel-flex-container>,
+
             <limel-example-value
                 value={this.dockItems.find((i) => i.selected)}
             />,
@@ -93,15 +76,5 @@ export class DockBasicExample {
                 selected: item.value === event.detail?.value,
             };
         });
-    };
-
-    private setDisabled = (event: CustomEvent<boolean>) => {
-        event.stopPropagation();
-        this.disabled = event.detail;
-    };
-
-    private setReadonly = (event: CustomEvent<boolean>) => {
-        event.stopPropagation();
-        this.readonly = event.detail;
     };
 }
