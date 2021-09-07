@@ -25,7 +25,7 @@ export class Dock {
      * What flow items to render
      */
     @Prop()
-    public flowItems: FlowItem[] = [];
+    public dockItems: FlowItem[] = [];
 
     /**
      * Set to `true` to disable the progress flow.
@@ -59,10 +59,10 @@ export class Dock {
     }
 
     public render() {
-        const regularFlowItems = this.flowItems.filter((item) => {
+        const regularFlowItems = this.dockItems.filter((item) => {
             return !item.isOffProgress;
         });
-        const endPhaseItems = this.flowItems.filter((item) => {
+        const endPhaseItems = this.dockItems.filter((item) => {
             return item.isOffProgress;
         });
         this.selectedItemIndex = regularFlowItems.findIndex((item) => {

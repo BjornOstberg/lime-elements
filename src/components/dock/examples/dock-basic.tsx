@@ -16,7 +16,7 @@ export class DockBasicExample {
     private readonly = false;
 
     @State()
-    private flowItems: FlowItem[] = [
+    private dockItems: FlowItem[] = [
         {
             value: '1',
             text: 'Step 1',
@@ -30,7 +30,7 @@ export class DockBasicExample {
     public render() {
         return [
             <limel-dock
-                flowItems={this.flowItems}
+                dockItems={this.dockItems}
                 onChange={this.handleChange}
                 disabled={this.disabled}
                 readonly={this.readonly}
@@ -48,13 +48,13 @@ export class DockBasicExample {
                 />
             </limel-flex-container>,
             <limel-example-value
-                value={this.flowItems.find((i) => i.selected)}
+                value={this.dockItems.find((i) => i.selected)}
             />,
         ];
     }
 
     private handleChange = (event: CustomEvent<FlowItem>) => {
-        this.flowItems = this.flowItems.map((item) => {
+        this.dockItems = this.dockItems.map((item) => {
             return {
                 ...item,
                 selected: item.value === event.detail?.value,
