@@ -59,18 +59,18 @@ export class Dock {
     }
 
     public render() {
-        const regularFlowItems = this.dockItems.filter((item) => {
+        const regularDockItems = this.dockItems.filter((item) => {
             return !item.isOffProgress;
         });
         const endPhaseItems = this.dockItems.filter((item) => {
             return item.isOffProgress;
         });
-        this.selectedItemIndex = regularFlowItems.findIndex((item) => {
+        this.selectedItemIndex = regularDockItems.findIndex((item) => {
             return item.selected;
         });
 
         return [
-            regularFlowItems.map(this.renderRegularFlowItem),
+            regularDockItems.map(this.renderRegularFlowItem),
             endPhaseItems.map(this.renderEndPhaseItem),
         ];
     }

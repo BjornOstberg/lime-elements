@@ -18,13 +18,46 @@ export class DockBasicExample {
     @State()
     private dockItems: FlowItem[] = [
         {
-            value: '1',
-            text: 'Step 1',
+            value: 'contact',
+            text: 'Customer contact',
+            selectedColor: 'rgb(var(--color-orange-default))',
             selected: true,
-            icon: 'add_shopping_cart',
+            icon: 'meeting',
         },
-        { value: '2', text: 'Step 2', icon: 'shopping_cart_loaded' },
-        { value: '3', text: 'Step 3', icon: 'insert_money_euro' },
+        {
+            value: 'requirement',
+            text: 'Demand analysis',
+            selectedColor: 'rgb(var(--color-sky-default))',
+            icon: 'combo_chart',
+        },
+        {
+            value: 'tender',
+            text: 'Quote',
+            selectedColor: 'rgb(var(--color-green-default))',
+            icon: 'paper_plane',
+        },
+        {
+            value: 'agreement',
+            text: 'Agreement',
+            selectedColor: 'rgb(var(--color-teal-default))',
+            icon: 'agreement',
+        },
+        {
+            value: 'rejected',
+            text: 'Rejected',
+            isOffProgress: true,
+            selectedColor: 'rgb(var(--color-red-dark))',
+            icon: 'do_not_disturb',
+            iconColor: 'rgb(var(--color-red-dark))',
+        },
+        {
+            value: 'onhold',
+            text: 'On hold',
+            isOffProgress: true,
+            selectedColor: 'rgb(var(--color-coral-default))',
+            icon: 'circled_pause',
+            iconColor: 'rgb(var(--color-coral-default))',
+        },
     ];
 
     public render() {
