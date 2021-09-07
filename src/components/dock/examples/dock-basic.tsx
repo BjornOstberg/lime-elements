@@ -1,5 +1,5 @@
 import { Component, h, State } from '@stencil/core';
-import { FlowItem } from '../dock.types';
+import { DockItem } from '../dock.types';
 
 /**
  * Basic Example
@@ -16,7 +16,7 @@ export class DockBasicExample {
     private readonly = false;
 
     @State()
-    private dockItems: FlowItem[] = [
+    private dockItems: DockItem[] = [
         {
             value: 'contact',
             text: 'Customer contact',
@@ -86,7 +86,7 @@ export class DockBasicExample {
         ];
     }
 
-    private handleChange = (event: CustomEvent<FlowItem>) => {
+    private handleChange = (event: CustomEvent<DockItem>) => {
         this.dockItems = this.dockItems.map((item) => {
             return {
                 ...item,

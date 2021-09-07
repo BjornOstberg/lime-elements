@@ -6,7 +6,7 @@ import {
     h,
     Prop,
 } from '@stencil/core';
-import { FlowItem } from '../dock.types';
+import { DockItem } from '../dock.types';
 
 /**
  * @private
@@ -16,7 +16,7 @@ import { FlowItem } from '../dock.types';
     shadow: false,
     styleUrl: 'dock-item.scss',
 })
-export class DockItem {
+export class DockItemMenu {
     @Element()
     public element: HTMLLimelDockItemElement;
 
@@ -24,7 +24,7 @@ export class DockItem {
      * The flow item that should be rendered
      */
     @Prop()
-    public item: FlowItem = null;
+    public item: DockItem = null;
 
     /**
      * True if the flow item should be disabled

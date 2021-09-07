@@ -6,7 +6,7 @@ import {
     h,
     Prop,
 } from '@stencil/core';
-import { FlowItem } from './dock.types';
+import { DockItem } from './dock.types';
 
 /**
  * @exampleComponent limel-example-dock-basic
@@ -25,7 +25,7 @@ export class Dock {
      * What flow items to render
      */
     @Prop()
-    public dockItems: FlowItem[] = [];
+    public dockItems: DockItem[] = [];
 
     /**
      * Set to `true` to disable the progress flow.
@@ -50,7 +50,7 @@ export class Dock {
      * Fired when a new value has been selected from the progress flow
      */
     @Event()
-    public change: EventEmitter<FlowItem>;
+    public change: EventEmitter<DockItem>;
 
     private selectedItemIndex: number;
 
@@ -70,15 +70,15 @@ export class Dock {
         });
 
         return [
-            regularDockItems.map(this.renderRegularFlowItem),
+            regularDockItems.map(this.renderRegularDockItem),
             endPhaseItems.map(this.renderEndPhaseItem),
         ];
     }
 
-    private renderRegularFlowItem = (
-        item: FlowItem,
+    private renderRegularDockItem = (
+        item: DockItem,
         index: number,
-        array: FlowItem[]
+        array: DockItem[]
     ) => {
         return (
             <limel-progress-flow-item
@@ -93,15 +93,15 @@ export class Dock {
                 disabled={this.disabled || this.readonly}
                 readonly={this.readonly}
                 item={item}
-                onInteract={this.handleFlowItemClick(item)}
+                onInteract={this.handleDockItemClick(item)}
             />
         );
     };
 
     private renderEndPhaseItem = (
-        item: FlowItem,
+        item: DockItem,
         index: number,
-        array: FlowItem[]
+        array: DockItem[]
     ) => {
         return (
             <limel-progress-flow-item
@@ -116,31 +116,31 @@ export class Dock {
                 disabled={this.disabled || this.readonly}
                 readonly={this.readonly}
                 item={item}
-                onInteract={this.handleFlowItemClick(item)}
+                onInteract={this.handleDockItemClick(item)}
             />
         );
     };
 
-    private handleFlowItemClick = (flowItem: FlowItem) => () => {
-        if (!flowItem.selected && !flowItem.disabled && !this.disabled) {
-            this.change.emit(flowItem);
+    private handleDockItemClick = (dockItem: DockItem) => () => {
+        if (!dockItem.selected && !dockItem.disabled && !this.disabled) {
+            this.change.emit(dockItem);
         }
     };
 
-    private getItemStyle(flowItem: FlowItem) {
+    private getItemStyle(dockItem: DockItem) {
         const style: any = {};
-        if (flowItem?.selectedColor) {
+        if (dockItem?.selectedColor) {
             style['--progress-flow-step-background-color--selected'] =
-                flowItem.selectedColor;
+                dockItem.selectedColor;
         }
 
-        if (flowItem?.passedColor) {
+        if (dockItem?.passedColor) {
             style['--progress-flow-step-background-color--passed'] =
-                flowItem.passedColor;
+                dockItem.passedColor;
         }
 
-        if (flowItem?.iconColor) {
-            style['--progress-flow-icon-color--inactive'] = flowItem.iconColor;
+        if (dockItem?.iconColor) {
+            style['--progress-flow-icon-color--inactive'] = dockItem.iconColor;
         }
 
         return style;
@@ -165,7 +165,7 @@ export class Dock {
         }
     }
 
-    private getElementForSelectedItem(): HTMLLimelProgressFlowItemElement {
+    private getElementForSelectedItem(): HTMLLimelDockItemElement {
         return this.element.shadowRoot.querySelector('.flow-item.selected');
     }
 }
