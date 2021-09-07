@@ -40,19 +40,19 @@ export class Dock {
     }
 
     public render() {
-        const regularDockItems = this.dockItems.filter((item) => {
-            return !item.isOffProgress;
+        const staticDockItems = this.dockItems.filter((item) => {
+            return !item.isDynamic;
         });
-        const endPhaseItems = this.dockItems.filter((item) => {
-            return item.isOffProgress;
+        const dynamicDockItems = this.dockItems.filter((item) => {
+            return item.isDynamic;
         });
-        this.selectedItemIndex = regularDockItems.findIndex((item) => {
+        this.selectedItemIndex = staticDockItems.findIndex((item) => {
             return item.selected;
         });
 
         return [
-            regularDockItems.map(this.renderRegularDockItem),
-            endPhaseItems.map(this.renderEndPhaseItem),
+            staticDockItems.map(this.renderRegularDockItem),
+            dynamicDockItems.map(this.renderEndPhaseItem),
         ];
     }
 

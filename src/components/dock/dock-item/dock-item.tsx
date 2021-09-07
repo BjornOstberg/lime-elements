@@ -58,7 +58,7 @@ export class DockItemMenu {
         ];
     }
 
-   
+
 
     private getToolTipText() {
         if (!this.item.secondaryText) {
@@ -89,7 +89,7 @@ export class DockItemMenu {
     }
 
     private renderDivider() {
-        if (this.item.isOffProgress) {
+        if (this.item.isDynamic) {
             return;
         }
 

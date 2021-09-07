@@ -5,12 +5,13 @@ export interface DockItem extends ListItem {
      * Determines whether a step should be a part of the flow,
      * or should be an independent step visually located on the side.
      */
-    isOffProgress?: boolean;
+    isDynamic?: boolean;
 
     /**
      * Background color of selected step.
      */
     selectedColor?: string;
+
 
 
     /**

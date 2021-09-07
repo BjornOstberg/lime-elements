@@ -33,14 +33,14 @@ export class DockBasicExample {
         {
             value: 'agreement',
             text: 'Agreement',
-            isOffProgress: true,
+            isDynamic: true,
             selectedColor: 'rgb(var(--color-teal-default))',
             icon: 'agreement',
         },
         {
             value: 'rejected',
             text: 'Rejected',
-            isOffProgress: true,
+            isDynamic: true,
             selectedColor: 'rgb(var(--color-red-dark))',
             icon: 'do_not_disturb',
             iconColor: 'rgb(var(--color-red-dark))',
@@ -48,7 +48,7 @@ export class DockBasicExample {
         {
             value: 'onhold',
             text: 'On hold',
-            isOffProgress: true,
+            isDynamic: true,
             selectedColor: 'rgb(var(--color-coral-default))',
             icon: 'circled_pause',
             iconColor: 'rgb(var(--color-coral-default))',
