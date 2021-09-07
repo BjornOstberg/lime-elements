@@ -67,7 +67,7 @@ export class Dock {
                     'flow-item': true,
                     first: index === 0,
                     last: index === array.length - 1,
-                    passed: index < this.selectedItemIndex,
+                   // passed: index < this.selectedItemIndex,
                     selected: item.selected,
                 }}
                 style={this.getItemStyle(item)}
@@ -111,11 +111,6 @@ export class Dock {
         if (dockItem?.selectedColor) {
             style['--progress-flow-step-background-color--selected'] =
                 dockItem.selectedColor;
-        }
-
-        if (dockItem?.passedColor) {
-            style['--progress-flow-step-background-color--passed'] =
-                dockItem.passedColor;
         }
 
         if (dockItem?.iconColor) {
