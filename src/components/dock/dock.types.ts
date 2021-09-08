@@ -12,8 +12,6 @@ export interface DockItem extends ListItem {
      */
     selectedColor?: string;
 
-
-
     /**
      * Fill color of the icon on the step,
      * when it is neither selected nor passed.

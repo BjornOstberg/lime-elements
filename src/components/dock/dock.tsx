@@ -10,7 +10,6 @@ import { DockItem } from './dock.types';
 
 /**
  * @exampleComponent limel-example-dock-basic
-
  */
 @Component({
     tag: 'limel-dock',
@@ -33,8 +32,6 @@ export class Dock {
     @Event()
     public change: EventEmitter<DockItem>;
 
-    private selectedItemIndex: number;
-
     public componentDidRender() {
         this.scrollToSelectedItem();
     }
@@ -46,9 +43,9 @@ export class Dock {
         const dynamicDockItems = this.dockItems.filter((item) => {
             return item.isDynamic;
         });
-        this.selectedItemIndex = staticDockItems.findIndex((item) => {
+        /* this.selectedItemIndex = staticDockItems.findIndex((item) => {
             return item.selected;
-        });
+        });*/
 
         return [
             staticDockItems.map(this.renderRegularDockItem),
@@ -67,11 +64,10 @@ export class Dock {
                     'flow-item': true,
                     first: index === 0,
                     last: index === array.length - 1,
-                   // passed: index < this.selectedItemIndex,
+                    // passed: index < this.selectedItemIndex,
                     selected: item.selected,
                 }}
                 style={this.getItemStyle(item)}
-
                 item={item}
                 onInteract={this.handleDockItemClick(item)}
             />
@@ -93,7 +89,6 @@ export class Dock {
                     'last-off-progress-item': index === array.length - 1,
                 }}
                 style={this.getItemStyle(item)}
-
                 item={item}
                 onInteract={this.handleDockItemClick(item)}
             />
@@ -101,7 +96,7 @@ export class Dock {
     };
 
     private handleDockItemClick = (dockItem: DockItem) => () => {
-        if (!dockItem.selected ) {
+        if (!dockItem.selected) {
             this.change.emit(dockItem);
         }
     };
