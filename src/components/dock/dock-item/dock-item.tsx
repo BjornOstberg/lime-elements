@@ -16,6 +16,8 @@ import { DockItem } from '../dock.types';
     shadow: false,
     styleUrl: 'dock-item.scss',
 })
+
+// buttons in a menu
 export class DockItemMenu {
     @Element()
     public element: HTMLLimelDockItemElement;
@@ -45,10 +47,8 @@ export class DockItemMenu {
                 class={{
                     step: true,
                     selected: this.item?.selected,
-
                 }}
                 onClick={this.handleClick}
-
             >
                 {this.renderIcon()}
                 <span class="text">{this.item.text}</span>
@@ -57,8 +57,6 @@ export class DockItemMenu {
             this.renderSecondaryText(),
         ];
     }
-
-
 
     private getToolTipText() {
         if (!this.item.secondaryText) {

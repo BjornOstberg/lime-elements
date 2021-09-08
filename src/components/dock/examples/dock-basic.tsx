@@ -14,14 +14,14 @@ export class DockBasicExample {
         {
             value: 'contact',
             text: 'Customer contact', // btn name
-            selectedColor: 'rgb(var(--color-orange-default))',
+            selectedColor: 'rgb(var(--color-green-default))',
             selected: true,
             icon: 'meeting',
         },
         {
             value: 'requirement',
             text: 'Demand analysis',
-            selectedColor: 'rgb(var(--color-sky-default))',
+            selectedColor: 'rgb(var(--color-green-default))',
             icon: 'combo_chart',
         },
         {
@@ -34,14 +34,14 @@ export class DockBasicExample {
             value: 'agreement',
             text: 'Agreement',
             isDynamic: true,
-            selectedColor: 'rgb(var(--color-teal-default))',
+            selectedColor: 'rgb(var(--color-sky-default))',
             icon: 'agreement',
         },
         {
             value: 'rejected',
             text: 'Rejected',
             isDynamic: true,
-            selectedColor: 'rgb(var(--color-red-dark))',
+            selectedColor: 'rgb(var(--color-sky-default))',
             icon: 'do_not_disturb',
             iconColor: 'rgb(var(--color-red-dark))',
         },
@@ -49,7 +49,7 @@ export class DockBasicExample {
             value: 'onhold',
             text: 'On hold',
             isDynamic: true,
-            selectedColor: 'rgb(var(--color-coral-default))',
+            selectedColor: 'rgb(var(--color-sky-default))',
             icon: 'circled_pause',
             iconColor: 'rgb(var(--color-coral-default))',
         },
