@@ -13,18 +13,17 @@ export class DockBasicExample {
     private dockItems: DockItem[] = [
         {
             value: 'home',
-            text: 'Lime', // btn name
+            text: 'Lime',
             selectedColor: 'rgb(var(--color-green-default))',
             selected: true,
-            icon: '-lime-logo-crm-filled',
-            isPopover: true, // if condition to popover
+            icon: '-lime-logo-outlined-colored',
         },
         {
             value: 'tables',
             text: 'Tables',
             selectedColor: 'rgb(var(--color-green-default))',
             icon: 'insert_table',
-            isPopover: true,
+            isPopover: true, // if condition to popover
         },
         {
             value: 'search',

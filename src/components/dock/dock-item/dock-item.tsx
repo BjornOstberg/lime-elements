@@ -57,7 +57,12 @@ export class DockItemMenu {
     }
     private renderPopover() {
         return [
-            <limel-menu items={[{ text: 'item1' }]}>
+            <limel-menu
+                items={[
+                    { text: 'item1', icon: 'apple' },
+                    { text: 'item2', icon: 'banana' },
+                ]}
+            >
                 <button
                     tabindex="0"
                     title={this.getToolTipText()}
