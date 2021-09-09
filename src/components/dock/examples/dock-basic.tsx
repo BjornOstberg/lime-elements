@@ -17,7 +17,7 @@ export class DockBasicExample {
             selectedColor: 'rgb(var(--color-green-default))',
             selected: true,
             icon: 'meeting',
-            isP: true,
+            isP: true, // if condition to popover
         },
         {
             value: 'requirement',

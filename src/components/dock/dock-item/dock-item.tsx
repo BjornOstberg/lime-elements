@@ -77,7 +77,7 @@ export class DockItemMenu {
         return <limel-icon name={this.item.icon} size="small" class="icon" />;
     }
     private renderP() {
-        if (this.item.isP) {
+        if (!this.item.isP) {
             return;
         }
 
