@@ -39,13 +39,14 @@
 .step {
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
     display: flex;
-    justify-content: center;
     align-items: center;
     position: relative;
     width: 100%;
     height: var(--step-height);
     border: none;
+    border-radius: functions.pxToRem(4);
     font-size: functions.pxToRem(14);
+    margin-bottom: functions.pxToRem(6);
 
     &:focus {
         outline: none;
@@ -68,7 +69,6 @@
     }
 
     .off-progress-item & {
-        border-radius: functions.pxToRem(4);
         padding: 0 functions.pxToRem(12);
 
         .icon {

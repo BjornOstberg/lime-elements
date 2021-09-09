@@ -53,7 +53,6 @@ export class DockItemMenu {
                 {this.renderIcon()}
                 <span class="text">{this.item.text}</span>
             </button>,
-            this.renderSecondaryText(),
         ];
     }
 
@@ -68,14 +67,6 @@ export class DockItemMenu {
     private handleClick = () => {
         this.interact.emit();
     };
-
-    private renderSecondaryText() {
-        if (!this.item?.secondaryText) {
-            return;
-        }
-
-        return <div class="secondary-text">{this.item.secondaryText}</div>;
-    }
 
     private renderIcon() {
         if (!this.item.icon) {
