@@ -17,13 +17,14 @@ export class DockBasicExample {
             selectedColor: 'rgb(var(--color-green-default))',
             selected: true,
             icon: '-lime-logo-crm-filled',
-            isP: true, // if condition to popover
+            isPopover: true, // if condition to popover
         },
         {
             value: 'tables',
             text: 'Tables',
             selectedColor: 'rgb(var(--color-green-default))',
             icon: 'insert_table',
+            isPopover: true,
         },
         {
             value: 'search',

@@ -18,5 +18,5 @@ export interface DockItem extends ListItem {
      */
     iconColor?: string;
 
-    isP?: boolean;
+    isPopover?: boolean;
 }

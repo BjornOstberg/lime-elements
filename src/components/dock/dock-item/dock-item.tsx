@@ -35,8 +35,8 @@ export class DockItemMenu {
     public interact: EventEmitter<void>;
 
     public render() {
-        if (!this.item) {
-            return [<button>{this.renderP()}</button>];
+        if (this.item.isPopover) {
+            return [<button>{this.renderPopover()}</button>];
         }
 
         return [
@@ -55,25 +55,24 @@ export class DockItemMenu {
             </button>,
         ];
     }
-    private renderP() {
-        if (!this.item.isP) {
-            return;
-        }
-
+    private renderPopover() {
         return [
-            <button
-                tabindex="0"
-                title={this.getToolTipText()}
-                type="button"
-                class={{
-                    step: true,
-                    selected: this.item?.selected,
-                }}
-                onClick={this.handleClick}
-            >
-                {this.renderIcon()}
-                <span class="text">{this.item.text}</span>
-            </button>,
+            <limel-menu items={[{ text: 'item1' }]}>
+                <button
+                    tabindex="0"
+                    title={this.getToolTipText()}
+                    type="button"
+                    slot="trigger"
+                    class={{
+                        step: true,
+                        selected: this.item?.selected,
+                    }}
+                    onClick={this.handleClick}
+                >
+                    {this.renderIcon()}
+                    <span class="text">{this.item.text}</span>
+                </button>
+            </limel-menu>,
         ];
     }
 
