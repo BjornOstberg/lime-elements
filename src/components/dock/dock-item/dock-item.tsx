@@ -36,6 +36,27 @@ export class DockItemMenu {
 
     public render() {
         if (!this.item) {
+            return [<button>{this.renderP()}</button>];
+        }
+
+        return [
+            <button
+                tabindex="0"
+                title={this.getToolTipText()}
+                type="button"
+                class={{
+                    step: true,
+                    selected: this.item?.selected,
+                }}
+                onClick={this.handleClick}
+            >
+                {this.renderIcon()}
+                <span class="text">{this.item.text}</span>
+            </button>,
+        ];
+    }
+    private renderP() {
+        if (!this.item.isP) {
             return;
         }
 
@@ -50,7 +71,6 @@ export class DockItemMenu {
                 }}
                 onClick={this.handleClick}
             >
-                {this.renderP()}
                 {this.renderIcon()}
                 <span class="text">{this.item.text}</span>
             </button>,
@@ -75,12 +95,5 @@ export class DockItemMenu {
         }
 
         return <limel-icon name={this.item.icon} size="small" class="icon" />;
-    }
-    private renderP() {
-        if (!this.item.isP) {
-            return;
-        }
-
-        return <p>popover</p>;
     }
 }

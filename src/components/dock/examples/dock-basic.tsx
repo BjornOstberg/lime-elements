@@ -12,47 +12,37 @@ export class DockBasicExample {
     @State()
     private dockItems: DockItem[] = [
         {
-            value: 'contact',
-            text: 'Customer contact', // btn name
+            value: 'home',
+            text: 'Lime', // btn name
             selectedColor: 'rgb(var(--color-green-default))',
             selected: true,
-            icon: 'meeting',
+            icon: '-lime-logo-crm-filled',
             isP: true, // if condition to popover
         },
         {
-            value: 'requirement',
-            text: 'Demand analysis',
+            value: 'tables',
+            text: 'Tables',
             selectedColor: 'rgb(var(--color-green-default))',
-            icon: 'combo_chart',
+            icon: 'insert_table',
         },
         {
-            value: 'tender',
-            text: 'Quote',
+            value: 'search',
+            text: 'Search',
             selectedColor: 'rgb(var(--color-green-default))',
-            icon: 'paper_plane',
+            icon: 'search',
         },
         {
-            value: 'agreement',
-            text: 'Agreement',
-            isDynamic: true,
-            selectedColor: 'rgb(var(--color-sky-default))',
-            icon: 'agreement',
+            value: 'create',
+            text: 'Create object',
+            selectedColor: 'rgb(var(--color-green-default))',
+            icon: 'plus_math',
         },
         {
-            value: 'rejected',
-            text: 'Rejected',
+            value: 'pinned',
+            text: 'Pinned tabs',
             isDynamic: true,
             selectedColor: 'rgb(var(--color-sky-default))',
-            icon: 'do_not_disturb',
-            iconColor: 'rgb(var(--color-red-dark))',
-        },
-        {
-            value: 'onhold',
-            text: 'On hold',
-            isDynamic: true,
-            selectedColor: 'rgb(var(--color-sky-default))',
-            icon: 'circled_pause',
-            iconColor: 'rgb(var(--color-coral-default))',
+            icon: 'bookmark_ribbon',
         },
     ];
 
