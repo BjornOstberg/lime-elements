@@ -17,7 +17,7 @@ import { DockItem } from '../dock.types';
     styleUrl: 'dock-item.scss',
 })
 
-// buttons in a menu
+// buttons in a menu component
 export class DockItemMenu {
     @Element()
     public element: HTMLLimelDockItemElement;
@@ -52,7 +52,6 @@ export class DockItemMenu {
             >
                 {this.renderIcon()}
                 <span class="text">{this.item.text}</span>
-                {this.renderDivider()}
             </button>,
             this.renderSecondaryText(),
         ];
@@ -84,13 +83,5 @@ export class DockItemMenu {
         }
 
         return <limel-icon name={this.item.icon} size="small" class="icon" />;
-    }
-
-    private renderDivider() {
-        if (this.item.isDynamic) {
-            return;
-        }
-
-        return <div class="divider" />;
     }
 }

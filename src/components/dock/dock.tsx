@@ -17,7 +17,7 @@ import { DockItem } from './dock.types';
     styleUrl: 'dock.scss',
 })
 
-// whole menu
+// whole menu component
 export class Dock {
     @Element()
     public element: HTMLLimelDockElement;
