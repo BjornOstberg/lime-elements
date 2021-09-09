@@ -45,6 +45,7 @@ export class Dock {
         const dynamicDockItems = this.dockItems.filter((item) => {
             return item.isDynamic;
         });
+
         /* this.selectedItemIndex = staticDockItems.findIndex((item) => {
             return item.selected;
         });*/

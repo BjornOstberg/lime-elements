@@ -17,6 +17,7 @@ export class DockBasicExample {
             selectedColor: 'rgb(var(--color-green-default))',
             selected: true,
             icon: 'meeting',
+            isP: true,
         },
         {
             value: 'requirement',

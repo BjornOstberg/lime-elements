@@ -17,4 +17,6 @@ export interface DockItem extends ListItem {
      * when it is neither selected nor passed.
      */
     iconColor?: string;
+
+    isP?: boolean;
 }

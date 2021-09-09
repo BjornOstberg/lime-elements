@@ -50,6 +50,7 @@ export class DockItemMenu {
                 }}
                 onClick={this.handleClick}
             >
+                {this.renderP()}
                 {this.renderIcon()}
                 <span class="text">{this.item.text}</span>
             </button>,
@@ -74,5 +75,12 @@ export class DockItemMenu {
         }
 
         return <limel-icon name={this.item.icon} size="small" class="icon" />;
+    }
+    private renderP() {
+        if (this.item.isP) {
+            return;
+        }
+
+        return <p>popover</p>;
     }
 }
