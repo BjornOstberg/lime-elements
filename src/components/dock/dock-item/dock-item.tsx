@@ -36,7 +36,7 @@ export class DockItemMenu {
 
     public render() {
         if (this.item.isPopover) {
-            return [<button>{this.renderPopover()}</button>];
+            return <div> {this.renderPopover()}</div>;
         }
 
         return [
@@ -59,8 +59,16 @@ export class DockItemMenu {
         return [
             <limel-menu
                 items={[
-                    { text: 'item1', icon: 'apple' },
-                    { text: 'item2', icon: 'banana' },
+                    {
+                        text: 'item1',
+                        icon: 'apple',
+                        iconColor: 'rgb(var(--color-red-light))',
+                    },
+                    {
+                        text: 'item2',
+                        icon: 'banana',
+                        iconColor: 'rgb(var(--color-yellow-light))',
+                    },
                 ]}
             >
                 <button
