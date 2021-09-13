@@ -70,53 +70,22 @@ export class DockItemMenu {
                 <limel-button
                     slot="trigger"
                     primary={true}
-                    label="Click me!"
+                    label={this.getToolTipText()}
                     onClick={this.openPopover}
                 />
                 <p style={{ margin: '0.5rem 1rem' }} tabindex="0">
                     Content
                 </p>
             </limel-popover>,
-            // <limel-menu
-            //     items={[
-            //         {
-            //             text: 'item1',
-            //             icon: 'apple',
-            //             iconColor: 'rgb(var(--color-red-light))',
-            //         },
-            //         {
-            //             text: 'item2',
-            //             icon: 'banana',
-            //             iconColor: 'rgb(var(--color-yellow-light))',
-            //         },
-            //     ]}
-            // >
-            //     <button
-            //         tabindex="0"
-            //         title={this.getToolTipText()}
-            //         type="button"
-            //         slot="trigger"
-            //         class={{
-            //             step: true,
-            //             selected: this.item?.selected,
-            //         }}
-            //         onClick={this.handleClick}
-            //     >
-            //         {this.renderIcon()}
-            //         <span class="text">{this.item.text}</span>
-            //     </button>
-            // </limel-menu>,
         ];
     }
     private openPopover = (event: MouseEvent) => {
         event.stopPropagation();
-        console.log('opening');
         this.isOpen = true;
     };
 
     private onPopoverClose = (event: CustomEvent) => {
         event.stopPropagation();
-        console.log('closing');
         this.isOpen = false;
     };
 
