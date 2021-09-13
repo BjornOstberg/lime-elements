@@ -43,6 +43,15 @@ export class DockBasicExample {
             isDynamic: true,
             selectedColor: 'rgb(var(--color-sky-default))',
             icon: 'bookmark_ribbon',
+            isCollapsible: true,
+        },
+        {
+            value: 'pinned again',
+            text: 'Pinned another tab',
+            isDynamic: true,
+            selectedColor: 'rgb(var(--color-sky-default))',
+            icon: 'bookmark_ribbon',
+            isCollapsible: true, // be able to see second level menu
         },
     ];
 

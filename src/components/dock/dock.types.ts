@@ -19,4 +19,6 @@ export interface DockItem extends ListItem {
     iconColor?: string;
 
     isPopover?: boolean;
+
+    isCollapsible?: boolean;
 }

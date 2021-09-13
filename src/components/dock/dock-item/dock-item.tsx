@@ -5,6 +5,7 @@ import {
     EventEmitter,
     h,
     Prop,
+    State,
 } from '@stencil/core';
 import { DockItem } from '../dock.types';
 
@@ -34,9 +35,16 @@ export class DockItemMenu {
     @Event()
     public interact: EventEmitter<void>;
 
+    @State()
+    private isOpen = false;
+
     public render() {
         if (this.item.isPopover) {
-            return <div> {this.renderPopover()}</div>;
+            return <div>{this.renderPopover()}</div>;
+        }
+
+        if (this.item.isCollapsible) {
+            return <div>{this.renderCollapsible()}</div>;
         }
 
         return [
@@ -55,22 +63,68 @@ export class DockItemMenu {
             </button>,
         ];
     }
+
     private renderPopover() {
         return [
-            <limel-menu
-                items={[
-                    {
-                        text: 'item1',
-                        icon: 'apple',
-                        iconColor: 'rgb(var(--color-red-light))',
-                    },
-                    {
-                        text: 'item2',
-                        icon: 'banana',
-                        iconColor: 'rgb(var(--color-yellow-light))',
-                    },
-                ]}
-            >
+            <limel-popover open={this.isOpen} onClose={this.onPopoverClose}>
+                <limel-button
+                    slot="trigger"
+                    primary={true}
+                    label="Click me!"
+                    onClick={this.openPopover}
+                />
+                <p style={{ margin: '0.5rem 1rem' }} tabindex="0">
+                    Content
+                </p>
+            </limel-popover>,
+            // <limel-menu
+            //     items={[
+            //         {
+            //             text: 'item1',
+            //             icon: 'apple',
+            //             iconColor: 'rgb(var(--color-red-light))',
+            //         },
+            //         {
+            //             text: 'item2',
+            //             icon: 'banana',
+            //             iconColor: 'rgb(var(--color-yellow-light))',
+            //         },
+            //     ]}
+            // >
+            //     <button
+            //         tabindex="0"
+            //         title={this.getToolTipText()}
+            //         type="button"
+            //         slot="trigger"
+            //         class={{
+            //             step: true,
+            //             selected: this.item?.selected,
+            //         }}
+            //         onClick={this.handleClick}
+            //     >
+            //         {this.renderIcon()}
+            //         <span class="text">{this.item.text}</span>
+            //     </button>
+            // </limel-menu>,
+        ];
+    }
+    private openPopover = (event: MouseEvent) => {
+        event.stopPropagation();
+        console.log('opening');
+        this.isOpen = true;
+    };
+
+    private onPopoverClose = (event: CustomEvent) => {
+        event.stopPropagation();
+        console.log('closing');
+        this.isOpen = false;
+    };
+
+    private renderCollapsible() {
+        return [
+            <limel-collapsible-section header={this.item.text}>
+                <p>Pinned object.</p>
+
                 <button
                     tabindex="0"
                     title={this.getToolTipText()}
@@ -85,10 +139,9 @@ export class DockItemMenu {
                     {this.renderIcon()}
                     <span class="text">{this.item.text}</span>
                 </button>
-            </limel-menu>,
+            </limel-collapsible-section>,
         ];
     }
-
     private getToolTipText() {
         if (!this.item.secondaryText) {
             return this.item.text;
