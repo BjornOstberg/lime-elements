@@ -35,10 +35,4 @@
 
 .first-dynamic-dock-item {
     margin-top: functions.pxToRem(12);
-    
-}
-
-:host(.is-narrow) {
-    --step-height: 1.5rem;
-    --selected-indicator-right: 0;
 }
