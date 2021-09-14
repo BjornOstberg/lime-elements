@@ -2,7 +2,6 @@
     &:after {
         pointer-events: none;
         box-sizing: border-box;
-        z-index: z-index.$limel-progress-flow-step-content;
         position: absolute;
         right: var(--selected-indicator-right);
 
