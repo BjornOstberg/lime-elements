@@ -24,12 +24,6 @@
         --dock-item-text-color--passed,
         var(--button-text--selected)
     );
-
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
 }
 
 .button {
@@ -37,10 +31,12 @@
     display: flex;
     align-items: center;
     position: relative;
+
     width: 100%;
     height: var(--button-height);
+
     border: none;
-    border-radius: functions.pxToRem(4);
+    border-radius: functions.pxToRem(6);
     font-size: functions.pxToRem(14);
 
     &:focus {
