@@ -6,7 +6,7 @@
         color: var(--progress-flow-icon-color, var(--step-text));
     }
 
-    .flow-item.selected & {
+    .dock-item.selected & {
         color: var(--step-text--selected);
         background-color: var(--step-background--selected);
 
@@ -19,7 +19,7 @@
         }
     }
 
-    .flow-item.passed & {
+    .dock-item.passed & {
         color: var(--step-text--passed);
         background-color: var(--step-background--passed);
 

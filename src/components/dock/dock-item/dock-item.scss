@@ -3,7 +3,7 @@
 @use '../../../style/internal/variables';
 @use '../../../style/internal/z-index';
 
-.flow-item {
+.dock-item {
     --step-background: var(
         --progress-flow-step-background-color,
         rgb(var(--contrast-600))
@@ -56,7 +56,7 @@
         box-shadow: var(--shadow-depth-8-focused);
     }
 
-    .flow-item:not(.selected) & {
+    .dock-item:not(.selected) & {
         &:not(.disabled) {
             cursor: pointer;
             &:hover {

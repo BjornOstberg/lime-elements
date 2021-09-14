@@ -64,7 +64,7 @@ export class Dock {
         return (
             <limel-dock-item
                 class={{
-                    'flow-item': true,
+                    'dock-item': true,
                     first: index === 0,
                     last: index === array.length - 1,
                     // passed: index < this.selectedItemIndex,
@@ -85,7 +85,7 @@ export class Dock {
         return (
             <limel-dock-item
                 class={{
-                    'flow-item': true,
+                    'dock-item': true,
                     'off-progress-item': true,
                     selected: item.selected,
                     'first-off-progress-item': index === 0,
@@ -138,6 +138,6 @@ export class Dock {
     }
 
     private getElementForSelectedItem(): HTMLLimelDockItemElement {
-        return this.element.shadowRoot.querySelector('.flow-item.selected');
+        return this.element.shadowRoot.querySelector('.dock-item.selected');
     }
 }
