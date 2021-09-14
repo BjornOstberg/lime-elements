@@ -5,24 +5,16 @@
         position: absolute;
         right: var(--selected-indicator-right);
 
-        background-color: var(--button-divider-color);
-        width: functions.pxToRem(6);
-        height: functions.pxToRem(6);
-        border-radius: 50%;
+        background-color: var(--button-text--selected);
+        width: functions.pxToRem(2);
+        height: calc(100% - #{functions.pxToRem(8)});
+        border-radius: functions.pxToRem(6);
         opacity: 0.7;
     }
 
-    .last & {
+    &.selected {
         &:after {
-            right: functions.pxToRem(8);
-        }
-    }
-
-    &:not(.off-progress) {
-        &.selected {
-            &:after {
-                content: '';
-            }
+            content: '';
         }
     }
 }
