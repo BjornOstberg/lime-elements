@@ -77,16 +77,10 @@
     }
 }
 
-.text,
-.secondary-text {
+.text {
     @include mixins.truncate-text();
     max-width: var(--max-text-width);
     z-index: z-index.$limel-progress-flow-step-content;
-}
-
-.secondary-text {
-    font-size: functions.pxToRem(12);
-    margin: auto;
 }
 
 .icon {
