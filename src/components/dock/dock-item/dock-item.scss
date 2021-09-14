@@ -3,29 +3,29 @@
 @use '../../../style/internal/variables';
 
 .dock-item {
-    --step-background: var(
+    --button-background: var(
         --dock-item-background-color,
         rgb(var(--contrast-600))
     );
-    --step-background--selected: var(
+    --button-background--selected: var(
         --dock-item-background-color--selected,
         var(--mdc-theme-primary)
     );
-    --step-background--passed: var(
+    --button-background--passed: var(
         --dock-item-background-color--passed,
-        var(--step-background--selected)
+        var(--button-background--selected)
     );
-    --step-text: var(
+    --button-text: var(
         --dock-item-text-color,
         rgb(var(--contrast-1200))
     );
-    --step-text--selected: var(
+    --button-text--selected: var(
         --dock-item-text-color--selected,
         var(--mdc-theme-on-primary)
     );
-    --step-text--passed: var(
+    --button-text--passed: var(
         --dock-item-text-color--passed,
-        var(--step-text--selected)
+        var(--button-text--selected)
     );
 
     position: relative;
@@ -35,13 +35,13 @@
     align-items: flex-start;
 }
 
-.step {
+.button {
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     align-items: center;
     position: relative;
     width: 100%;
-    height: var(--step-height);
+    height: var(--button-height);
     border: none;
     border-radius: functions.pxToRem(4);
     font-size: functions.pxToRem(14);

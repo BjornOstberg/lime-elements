@@ -1,11 +1,11 @@
-.step {
+.button {
     &:after {
         pointer-events: none;
         box-sizing: border-box;
         position: absolute;
         right: var(--selected-indicator-right);
 
-        background-color: var(--step-divider-color);
+        background-color: var(--button-divider-color);
         width: functions.pxToRem(6);
         height: functions.pxToRem(6);
         border-radius: 50%;

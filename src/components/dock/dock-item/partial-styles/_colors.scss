@@ -1,41 +1,41 @@
-.step {
-    color: var(--step-text);
-    background-color: var(--step-background);
+.button {
+    color: var(--button-text);
+    background-color: var(--button-background);
 
     .icon {
-        color: var(--dock-item-icon-color, var(--step-text));
+        color: var(--dock-item-icon-color, var(--button-text));
     }
 
     .dock-item.selected & {
-        color: var(--step-text--selected);
-        background-color: var(--step-background--selected);
+        color: var(--button-text--selected);
+        background-color: var(--button-background--selected);
 
         .divider:after {
-            background-color: var(--step-background--selected);
+            background-color: var(--button-background--selected);
         }
 
         .icon {
-            color: var(--step-text--selected);
+            color: var(--button-text--selected);
         }
     }
 
     .dock-item.passed & {
-        color: var(--step-text--passed);
-        background-color: var(--step-background--passed);
+        color: var(--button-text--passed);
+        background-color: var(--button-background--passed);
 
         .divider:after {
-            background-color: var(--step-background--passed);
+            background-color: var(--button-background--passed);
         }
 
         .icon {
-            color: var(--step-text--passed);
+            color: var(--button-text--passed);
         }
     }
 }
 
 .divider {
     &:after {
-        border-color: var(--step-divider-color);
-        background-color: var(--step-background);
+        border-color: var(--button-divider-color);
+        background-color: var(--button-background);
     }
 }

@@ -53,7 +53,7 @@ export class DockItemMenu {
                 title={this.getToolTipText()}
                 type="button"
                 class={{
-                    step: true,
+                    button: true,
                     selected: this.item?.selected,
                 }}
                 onClick={this.handleClick}
@@ -100,7 +100,7 @@ export class DockItemMenu {
                     type="button"
                     slot="trigger"
                     class={{
-                        step: true,
+                        button: true,
                         selected: this.item?.selected,
                     }}
                     onClick={this.handleClick}
