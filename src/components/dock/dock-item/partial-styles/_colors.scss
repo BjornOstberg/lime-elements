@@ -10,10 +10,6 @@
         color: var(--button-text--selected);
         background-color: var(--button-background--selected);
 
-        .divider:after {
-            background-color: var(--button-background--selected);
-        }
-
         .icon {
             color: var(--button-text--selected);
         }
@@ -23,19 +19,8 @@
         color: var(--button-text--passed);
         background-color: var(--button-background--passed);
 
-        .divider:after {
-            background-color: var(--button-background--passed);
-        }
-
         .icon {
             color: var(--button-text--passed);
         }
-    }
-}
-
-.divider {
-    &:after {
-        border-color: var(--button-divider-color);
-        background-color: var(--button-background);
     }
 }
