@@ -3,7 +3,7 @@
     background-color: var(--step-background);
 
     .icon {
-        color: var(--progress-flow-icon-color, var(--step-text));
+        color: var(--dock-item-icon-color, var(--step-text));
     }
 
     .dock-item.selected & {

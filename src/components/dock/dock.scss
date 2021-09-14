@@ -9,7 +9,7 @@
 * @prop --dock-item-text-color--selected: Text color of selected step, defaults to `--lime-primary-color`.
 * @prop --dock-item-text-color-passed: Text color of passed steps, defaults to the text color the step has when selected.
 * @prop --dock-item-divider-color: Color of the arrow shaped dividers between steps which must be the same as component's background, defaults to `--contrast-100`.
-* @prop --progress-flow-icon-color: Color of the optional icons used in each step. Only affects inactive steps, defaults to text colors for inactive, active, or passed step.
+* @prop --dock-item-icon-color: Color of the optional icons used in each step. Only affects inactive steps, defaults to text colors for inactive, active, or passed step.
 */
 
 :host {

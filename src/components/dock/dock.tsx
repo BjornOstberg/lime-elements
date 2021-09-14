@@ -112,7 +112,7 @@ export class Dock {
         }
 
         if (dockItem?.iconColor) {
-            style['--progress-flow-icon-color--inactive'] = dockItem.iconColor;
+            style['--dock-item-icon-color--inactive'] = dockItem.iconColor;
         }
 
         return style;
