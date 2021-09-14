@@ -15,10 +15,7 @@
         --dock-item-background-color--passed,
         var(--button-background--selected)
     );
-    --button-text: var(
-        --dock-item-text-color,
-        rgb(var(--contrast-1200))
-    );
+    --button-text: var(--dock-item-text-color, rgb(var(--contrast-1200)));
     --button-text--selected: var(
         --dock-item-text-color--selected,
         var(--mdc-theme-on-primary)
@@ -45,7 +42,6 @@
     border: none;
     border-radius: functions.pxToRem(4);
     font-size: functions.pxToRem(14);
-    margin-bottom: functions.pxToRem(6);
 
     &:focus {
         outline: none;
