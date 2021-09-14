@@ -5,27 +5,27 @@
 
 .dock-item {
     --step-background: var(
-        --progress-flow-step-background-color,
+        --dock-item-background-color,
         rgb(var(--contrast-600))
     );
     --step-background--selected: var(
-        --progress-flow-step-background-color--selected,
+        --dock-item-background-color--selected,
         var(--mdc-theme-primary)
     );
     --step-background--passed: var(
-        --progress-flow-step-background-color--passed,
+        --dock-item-background-color--passed,
         var(--step-background--selected)
     );
     --step-text: var(
-        --progress-flow-step-text-color,
+        --dock-item-text-color,
         rgb(var(--contrast-1200))
     );
     --step-text--selected: var(
-        --progress-flow-step-text-color--selected,
+        --dock-item-text-color--selected,
         var(--mdc-theme-on-primary)
     );
     --step-text--passed: var(
-        --progress-flow-step-text-color--passed,
+        --dock-item-text-color--passed,
         var(--step-text--selected)
     );
 

@@ -107,7 +107,7 @@ export class Dock {
     private getItemStyle(dockItem: DockItem) {
         const style: any = {};
         if (dockItem?.selectedColor) {
-            style['--progress-flow-step-background-color--selected'] =
+            style['--dock-item-background-color--selected'] =
                 dockItem.selectedColor;
         }
 
