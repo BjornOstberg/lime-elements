@@ -38,6 +38,9 @@ export class DockItemMenu {
     @State()
     private isOpen = false;
 
+    // @State()
+    // private isTrigger = false;
+
     public render() {
         if (this.item.isPopover) {
             return this.renderPopover();
@@ -47,8 +50,38 @@ export class DockItemMenu {
             return this.renderCollapsible();
         }
 
+        return this.renderButton();
+    }
+
+    private renderPopover() {
+        return [
+            <limel-popover open={this.isOpen} onClose={this.onPopoverClose}>
+                /* <button
+                    slot="trigger"
+                    tabindex="0"
+                    title={this.getToolTipText()}
+                    type="button"
+                    class={{
+                        button: true,
+                        selected: this.item?.selected,
+                    }}
+                    onClick={this.openPopover}
+                >
+                    {this.renderIcon()}
+                    <span class="text">{this.item.text}</span>
+                </button> */
+                {this.renderButton()}
+                <p style={{ margin: '0.5rem 1rem' }} tabindex="0">
+                    Content
+                </p>
+            </limel-popover>,
+        ];
+    }
+
+    private renderButton() {
         return [
             <button
+                // slot="trigger"
                 tabindex="0"
                 title={this.getToolTipText()}
                 type="button"
@@ -64,29 +97,6 @@ export class DockItemMenu {
         ];
     }
 
-    private renderPopover() {
-        return [
-            <limel-popover open={this.isOpen} onClose={this.onPopoverClose}>
-                <button
-                    slot="trigger"
-                    tabindex="0"
-                    title={this.getToolTipText()}
-                    type="button"
-                    class={{
-                        button: true,
-                        selected: this.item?.selected,
-                    }}
-                    onClick={this.openPopover}
-                >
-                    {this.renderIcon()}
-                    <span class="text">{this.item.text}</span>
-                </button>
-                <p style={{ margin: '0.5rem 1rem' }} tabindex="0">
-                    Content
-                </p>
-            </limel-popover>,
-        ];
-    }
     private openPopover = (event: MouseEvent) => {
         event.stopPropagation();
         this.isOpen = true;
@@ -100,22 +110,7 @@ export class DockItemMenu {
     private renderCollapsible() {
         return [
             <limel-collapsible-section header={this.item.text}>
-                <p>Pinned object.</p>
-
-                <button
-                    tabindex="0"
-                    title={this.getToolTipText()}
-                    type="button"
-                    slot="trigger"
-                    class={{
-                        button: true,
-                        selected: this.item?.selected,
-                    }}
-                    onClick={this.handleClick}
-                >
-                    {this.renderIcon()}
-                    <span class="text">{this.item.text}</span>
-                </button>
+                {this.renderButton()}
             </limel-collapsible-section>,
         ];
     }
