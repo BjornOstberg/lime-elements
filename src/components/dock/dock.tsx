@@ -86,10 +86,10 @@ export class Dock {
             <limel-dock-item
                 class={{
                     'dock-item': true,
-                    'off-progress-item': true,
+                    'dynamic-dock-item': true,
                     selected: item.selected,
                     'first-dynamic-dock-item': index === 0,
-                    'last-off-progress-item': index === array.length - 1,
+                    'last-dynamic-dock-item': index === array.length - 1,
                 }}
                 style={this.getItemStyle(item)}
                 item={item}
