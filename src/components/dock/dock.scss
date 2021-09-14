@@ -2,6 +2,7 @@
 @use '../../style/internal/variables';
 
 /**
+* @prop --dock-background-color: Background color of the whole compoentn, defaults to `--contrast-100`.
 * @prop --dock-item-background-color: Background color of buttons, defaults to `--contrast-600`.
 * @prop --dock-item-background-color--selected: Background color of selected button, defaults to `--lime-primary-color`.
 * @prop --dock-item-text-color: Text of buttons, defaults to `--contrast-1200`.
@@ -32,6 +33,7 @@
             )} rgba(var(--color-black), 0.05);
 
     height: 100%;
+    background-color: var(--dock-background-color, rgb(var(--contrast-100)));
 
     &::-webkit-scrollbar {
         display: none; // This hides the scrollbars appearing under in Chrome

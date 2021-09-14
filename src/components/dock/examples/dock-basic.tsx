@@ -14,34 +14,30 @@ export class DockBasicExample {
         {
             value: 'home',
             text: 'Lime',
-            selectedColor: 'rgb(var(--color-green-default))',
             selected: true,
+            selectedColor: 'rgb(var(--color-sky-default))',
             icon: '-lime-logo-outlined-colored',
         },
         {
             value: 'tables',
             text: 'Tables',
-            selectedColor: 'rgb(var(--color-green-default))',
             icon: 'insert_table',
             isPopover: true, // if condition to popover
         },
         {
             value: 'search',
             text: 'Search',
-            selectedColor: 'rgb(var(--color-green-default))',
             icon: 'search',
         },
         {
             value: 'create',
             text: 'Create object',
-            selectedColor: 'rgb(var(--color-green-default))',
             icon: 'plus_math',
         },
         {
             value: 'pinned',
             text: 'Pinned tabs',
             isDynamic: true,
-            selectedColor: 'rgb(var(--color-sky-default))',
             icon: 'bookmark_ribbon',
             isCollapsible: true,
         },
@@ -49,7 +45,6 @@ export class DockBasicExample {
             value: 'pinned again',
             text: 'Pinned another tab',
             isDynamic: true,
-            selectedColor: 'rgb(var(--color-sky-default))',
             icon: 'bookmark_ribbon',
             isCollapsible: true, // be able to see second level menu
         },
