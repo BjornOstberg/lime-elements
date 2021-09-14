@@ -40,11 +40,11 @@ export class DockItemMenu {
 
     public render() {
         if (this.item.isPopover) {
-            return <div>{this.renderPopover()}</div>;
+            return this.renderPopover();
         }
 
         if (this.item.isCollapsible) {
-            return <div>{this.renderCollapsible()}</div>;
+            return this.renderCollapsible();
         }
 
         return [
