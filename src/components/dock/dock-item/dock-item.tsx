@@ -67,12 +67,20 @@ export class DockItemMenu {
     private renderPopover() {
         return [
             <limel-popover open={this.isOpen} onClose={this.onPopoverClose}>
-                <limel-button
+                <button
                     slot="trigger"
-                    primary={true}
-                    label={this.getToolTipText()}
+                    tabindex="0"
+                    title={this.getToolTipText()}
+                    type="button"
+                    class={{
+                        button: true,
+                        selected: this.item?.selected,
+                    }}
                     onClick={this.openPopover}
-                />
+                >
+                    {this.renderIcon()}
+                    <span class="text">{this.item.text}</span>
+                </button>
                 <p style={{ margin: '0.5rem 1rem' }} tabindex="0">
                     Content
                 </p>
