@@ -14,13 +14,4 @@
             color: var(--button-text--selected);
         }
     }
-
-    .dock-item.passed & {
-        color: var(--button-text--passed);
-        background-color: var(--button-background--passed);
-
-        .icon {
-            color: var(--button-text--passed);
-        }
-    }
 }

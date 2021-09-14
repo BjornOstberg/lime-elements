@@ -5,24 +5,16 @@
 .dock-item {
     --button-background: var(
         --dock-item-background-color,
-        rgb(var(--contrast-600))
+        rgb(var(--contrast-200))
     );
     --button-background--selected: var(
         --dock-item-background-color--selected,
         var(--mdc-theme-primary)
     );
-    --button-background--passed: var(
-        --dock-item-background-color--passed,
-        var(--button-background--selected)
-    );
     --button-text: var(--dock-item-text-color, rgb(var(--contrast-1200)));
     --button-text--selected: var(
         --dock-item-text-color--selected,
         var(--mdc-theme-on-primary)
-    );
-    --button-text--passed: var(
-        --dock-item-text-color--passed,
-        var(--button-text--selected)
     );
 }
 
