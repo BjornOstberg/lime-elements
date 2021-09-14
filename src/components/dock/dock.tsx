@@ -88,7 +88,7 @@ export class Dock {
                     'dock-item': true,
                     'off-progress-item': true,
                     selected: item.selected,
-                    'first-off-progress-item': index === 0,
+                    'first-dynamic-dock-item': index === 0,
                     'last-off-progress-item': index === array.length - 1,
                 }}
                 style={this.getItemStyle(item)}
