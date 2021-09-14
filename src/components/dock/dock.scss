@@ -3,7 +3,7 @@
 
 /**
 * @prop --dock-background-color: Background color of the whole compoentn, defaults to `--contrast-100`.
-* @prop --dock-item-background-color: Background color of buttons, defaults to `--contrast-600`.
+* @prop --dock-item-background-color: Background color of buttons, defaults to `--dock-background-color`.
 * @prop --dock-item-background-color--selected: Background color of selected button, defaults to `--lime-primary-color`.
 * @prop --dock-item-text-color: Text of buttons, defaults to `--contrast-1200`.
 * @prop --dock-item-text-color--selected: Text color of selected button, defaults to `--lime-primary-color`.

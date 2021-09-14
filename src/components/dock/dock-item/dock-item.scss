@@ -5,7 +5,7 @@
 .dock-item {
     --button-background: var(
         --dock-item-background-color,
-        rgb(var(--contrast-200))
+        --dock-background-color
     );
     --button-background--selected: var(
         --dock-item-background-color--selected,
