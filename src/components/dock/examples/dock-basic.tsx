@@ -7,6 +7,7 @@ import { DockItem } from '../dock.types';
 @Component({
     tag: 'limel-example-dock-basic',
     shadow: true,
+    styleUrl: 'dock-basic.scss'
 })
 export class DockBasicExample {
     @State()
