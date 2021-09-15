@@ -16,11 +16,13 @@
     --max-text-width: 10rem;
 
     box-sizing: border-box;
-    width: 30%;
+    width: 30vw;
+    max-width: functions.pxToRem(400);
+    min-width: functions.pxToRem(200);
     display: grid;
     gap: functions.pxToRem(6);
 
-    overflow-x: auto;
+    overflow: hidden auto;
     scrollbar-width: none; // This hides the scrollbars appearing under in Firefox
     -ms-overflow-style: none; // Same as above for IE 11
     padding: functions.pxToRem(8); // needed for the focus effect
