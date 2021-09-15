@@ -38,9 +38,6 @@ export class DockItemMenu {
     @State()
     private isOpen = false;
 
-    // @State()
-    // private isTrigger = false;
-
     public render() {
         if (this.item.isPopover) {
             return this.renderPopover();
@@ -50,38 +47,22 @@ export class DockItemMenu {
             return this.renderCollapsible();
         }
 
-        return this.renderButton();
+        return this.renderButton(this.handleClick, '');
     }
 
     private renderPopover() {
         return [
             <limel-popover open={this.isOpen} onClose={this.onPopoverClose}>
-                /* <button
-                    slot="trigger"
-                    tabindex="0"
-                    title={this.getToolTipText()}
-                    type="button"
-                    class={{
-                        button: true,
-                        selected: this.item?.selected,
-                    }}
-                    onClick={this.openPopover}
-                >
-                    {this.renderIcon()}
-                    <span class="text">{this.item.text}</span>
-                </button> */
-                {this.renderButton()}
-                <p style={{ margin: '0.5rem 1rem' }} tabindex="0">
-                    Content
-                </p>
+                {this.renderButton(this.openPopover, 'trigger')}
+                <limel-example-list-grid />
             </limel-popover>,
         ];
     }
 
-    private renderButton() {
+    private renderButton(universalHandleClick, slot) {
         return [
             <button
-                // slot="trigger"
+                slot={slot}
                 tabindex="0"
                 title={this.getToolTipText()}
                 type="button"
@@ -89,7 +70,7 @@ export class DockItemMenu {
                     button: true,
                     selected: this.item?.selected,
                 }}
-                onClick={this.handleClick}
+                onClick={universalHandleClick}
             >
                 {this.renderIcon()}
                 <span class="text">{this.item.text}</span>
@@ -110,7 +91,7 @@ export class DockItemMenu {
     private renderCollapsible() {
         return [
             <limel-collapsible-section header={this.item.text}>
-                {this.renderButton()}
+                {this.renderButton(this.handleClick, '')}
             </limel-collapsible-section>,
         ];
     }
