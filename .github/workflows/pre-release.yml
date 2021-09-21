@@ -1,11 +1,12 @@
-name: Create and Publish Full Release
+name: Create and Publish Pre-Release
 on:
   push:
     branches:
-      - main
+      - next
 jobs:
   semantic-release:
     name: Run Semantic Release
+    if: "!contains(github.event.head_commit.message, '[release]')"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -38,16 +39,6 @@ jobs:
         GH_TOKEN: ${{ secrets.CREATE_RELEASE }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN_ads }}
         CI: true
-    - name: Merge release commit back to branch `next`
-      if: steps.semantic.outputs.new_release_published == 'true'
-      uses: MaximeHeckel/github-action-merge-fast-forward@v1.1.0
-      with:
-        # Branch to merge
-        branchtomerge: 'main'
-        # Branch that will be updated
-        branch: 'next'
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Trigger update in lime-crm-components
       if: steps.semantic.outputs.new_release_published == 'true'
       uses: peter-evans/repository-dispatch@v1
@@ -70,4 +61,4 @@ jobs:
         GH_EMAIL: 617355+lime-ci@users.noreply.github.com
         GH_TOKEN: ${{ secrets.CREATE_RELEASE }}
         CI: true
-      run: npm run docs:publish -- --v=${{ steps.semantic.outputs.new_release_version }} --forcePush --authorName="lime-ci" --authorEmail="617355+lime-ci@users.noreply.github.com"
+      run: npm run docs:publish -- --v=NEXT-${{ steps.semantic.outputs.new_release_version }} --forcePush --authorName="lime-ci" --authorEmail="617355+lime-ci@users.noreply.github.com"

@@ -6,10 +6,10 @@
 @use '../../style/internal/lime-theme';
 
 @use '@material/textfield';
-@use "@material/textfield/icon";
-@use "@material/notched-outline/mdc-notched-outline";
-@use "@material/floating-label";
-@use "@material/floating-label/mdc-floating-label";
+@use '@material/textfield/icon';
+@use '@material/notched-outline/mdc-notched-outline';
+@use '@material/floating-label';
+@use '@material/floating-label/mdc-floating-label';
 @use '@material/ripple';
 @use '@material/chips/deprecated/mdc-chips';
 
@@ -26,6 +26,7 @@
 
 @include shared_input-select-picker.outlined-style-overrides;
 @include shared_input-select-picker.floating-label-overrides;
+@include shared_input-select-picker.cropped-label-hack;
 @include shared_input-select-picker.disabled-overrides;
 @include shared_input-select-picker.readonly-overrides;
 @include shared_input-select-picker.leading-icon;
@@ -287,10 +288,11 @@ limel-icon.mdc-chip__icon.mdc-chip__icon--leading {
         }
 
         .mdc-floating-label {
-            padding-left: $leading-icon-space;
-            max-width: calc(100% - #{$leading-icon-space});
-            &.lime-floating-label--float-above {
-                padding-left: 0;
+            &:not(.lime-floating-label--float-above) {
+                left: $leading-icon-space;
+            }
+            &.mdc-floating-label--float-above {
+                left: functions.pxToRem(4);
             }
         }
     }
