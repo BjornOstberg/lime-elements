@@ -7,7 +7,7 @@ import { DockItem } from '../dock.types';
 @Component({
     tag: 'limel-example-dock-basic',
     shadow: true,
-    styleUrl: 'dock-basic.scss'
+    styleUrl: 'dock-basic.scss',
 })
 export class DockBasicExample {
     @State()
@@ -36,15 +36,15 @@ export class DockBasicExample {
             icon: 'plus_math',
         },
         {
-            value: 'pinned',
-            text: 'Pinned tabs',
+            value: 'Company',
+            text: 'Lime',
             isDynamic: true,
             icon: 'bookmark_ribbon',
             isCollapsible: true,
         },
         {
-            value: 'pinned again',
-            text: 'Pinned another tab',
+            value: 'Deals',
+            text: 'Diesel Sweden AB · Prospect',
             isDynamic: true,
             icon: 'bookmark_ribbon',
             isCollapsible: true, // be able to see second level menu

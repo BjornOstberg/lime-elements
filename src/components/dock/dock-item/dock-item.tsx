@@ -54,7 +54,8 @@ export class DockItemMenu {
         return [
             <limel-popover open={this.isOpen} onClose={this.onPopoverClose}>
                 {this.renderButton(this.openPopover, 'trigger')}
-                <limel-example-list-grid />
+                {/* <limel-example-list-grid /> */}
+                <limel-menu-list-grid />
             </limel-popover>,
         ];
     }
@@ -80,6 +81,7 @@ export class DockItemMenu {
 
     private openPopover = (event: MouseEvent) => {
         event.stopPropagation();
+        this.interact.emit();
         this.isOpen = true;
     };
 
@@ -90,7 +92,7 @@ export class DockItemMenu {
 
     private renderCollapsible() {
         return [
-            <limel-collapsible-section header={this.item.text}>
+            <limel-collapsible-section header={this.item.value}>
                 {this.renderButton(this.handleClick, '')}
             </limel-collapsible-section>,
         ];
