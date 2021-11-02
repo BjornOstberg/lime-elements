@@ -287,7 +287,9 @@ export class Menu {
         menuElements[selectedIndex]?.focus();
     };
 
-    private isMenuListItem(item: MenuListItem | ListSeparator): item is MenuListItem {
+    private isMenuListItem(
+        item: MenuListItem | ListSeparator
+    ): item is MenuListItem {
         return !('separator' in item);
     }
 }

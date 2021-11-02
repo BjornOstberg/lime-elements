@@ -219,7 +219,10 @@ export class MenuListRenderer {
      * @param {MenuListItem} item the list item
      * @returns {HTMLElement} the icon element
      */
-    private renderIcon = (config: MenuListRendererConfig, item: MenuListItem) => {
+    private renderIcon = (
+        config: MenuListRendererConfig,
+        item: MenuListItem
+    ) => {
         const style: any = {};
         if (item.iconColor) {
             if (config.badgeIcons) {
@@ -252,7 +255,9 @@ export class MenuListRenderer {
         return <hr class={classes} />;
     };
 
-    private renderActionMenu = (actions: Array<MenuListItem | ListSeparator>) => {
+    private renderActionMenu = (
+        actions: Array<MenuListItem | ListSeparator>
+    ) => {
         if (!actions || actions.length === 0) {
             return;
         }
@@ -312,7 +317,11 @@ export class MenuListRenderer {
                 data-index={index}
                 {...attributes}
             >
-                {this.renderVariantMenuListItemContent(config, item, itemTemplate)}
+                {this.renderVariantMenuListItemContent(
+                    config,
+                    item,
+                    itemTemplate
+                )}
             </li>
         );
     };

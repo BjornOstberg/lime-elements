@@ -6,7 +6,9 @@ describe('limel-menu-list', () => {
     let limelList;
     let innerList;
     beforeEach(async () => {
-        page = await newE2EPage({ html: '<limel-menu-list></limel-menu-list>' });
+        page = await newE2EPage({
+            html: '<limel-menu-list></limel-menu-list>',
+        });
         limelList = await page.find('limel-menu-list');
         innerList = await page.find('limel-menu-list>>>ul');
     });

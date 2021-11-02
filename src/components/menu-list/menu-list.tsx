@@ -166,9 +166,9 @@ export class MenuList {
             return;
         }
 
-        this.mdcList.selectedIndex = MenuListItems
-            .filter((item: MenuListItem) => item.selected)
-            .map((item: MenuListItem) => MenuListItems.indexOf(item));
+        this.mdcList.selectedIndex = MenuListItems.filter(
+            (item: MenuListItem) => item.selected
+        ).map((item: MenuListItem) => MenuListItems.indexOf(item));
     }
 
     private setup = () => {
@@ -266,14 +266,18 @@ export class MenuList {
     };
 
     private handleSingleSelect = (index: number) => {
-        const MenuListItems = this.items.filter(this.isMenuListItem) as MenuListItem[];
+        const MenuListItems = this.items.filter(
+            this.isMenuListItem
+        ) as MenuListItem[];
         if (MenuListItems[index].disabled) {
             return;
         }
 
-        const selectedItem: MenuListItem = MenuListItems.find((item: MenuListItem) => {
-            return !!item.selected;
-        });
+        const selectedItem: MenuListItem = MenuListItems.find(
+            (item: MenuListItem) => {
+                return !!item.selected;
+            }
+        );
 
         if (selectedItem) {
             this.change.emit({ ...selectedItem, selected: false });
@@ -291,13 +295,15 @@ export class MenuList {
     };
 
     private handleMultiSelect = (index: number) => {
-        const MenuListItems = this.items.filter(this.isMenuListItem) as MenuListItem[];
+        const MenuListItems = this.items.filter(
+            this.isMenuListItem
+        ) as MenuListItem[];
         if (MenuListItems[index].disabled) {
             return;
         }
 
-        const selectedItems: MenuListItem[] = MenuListItems
-            .filter((item: MenuListItem, listIndex: number) => {
+        const selectedItems: MenuListItem[] = MenuListItems.filter(
+            (item: MenuListItem, listIndex: number) => {
                 if (listIndex === index) {
                     // This is the item that was selected or deselected,
                     // so we negate its previous selection status.
@@ -306,10 +312,10 @@ export class MenuList {
 
                 // This is an item that didn't change, so we keep its selection status.
                 return item.selected;
-            })
-            .map((item: MenuListItem) => {
-                return { ...item, selected: true };
-            });
+            }
+        ).map((item: MenuListItem) => {
+            return { ...item, selected: true };
+        });
 
         this.change.emit(selectedItems);
     };
