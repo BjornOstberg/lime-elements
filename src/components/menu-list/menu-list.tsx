@@ -26,19 +26,7 @@ const { ACTION_EVENT } = listStrings;
 const { SELECTED_EVENT } = menuStrings;
 
 /**
- * @exampleComponent limel-example-list
- * @exampleComponent limel-example-list-secondary
- * @exampleComponent limel-example-list-selectable
- * @exampleComponent limel-example-list-icons
- * @exampleComponent limel-example-list-badge-icons
- * @exampleComponent limel-example-list-checkbox
- * @exampleComponent limel-example-list-checkbox-icons
- * @exampleComponent limel-example-list-radio-button
- * @exampleComponent limel-example-list-radio-button-icons
- * @exampleComponent limel-example-list-action
- * @exampleComponent limel-example-list-striped
- * @exampleComponent limel-example-list-badge-icons-with-multiple-lines
- * @exampleComponent limel-example-list-grid
+ * @private
  */
 @Component({
     tag: 'limel-menu-list',
