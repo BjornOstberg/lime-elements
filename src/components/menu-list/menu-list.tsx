@@ -53,11 +53,9 @@ export class MenuList {
     public iconSize: IconSize = 'small';
 
     /**
-     * The type of the list, omit to get a regular list. Available types are:
-     * `selectable`: regular list with single selection.
-     * `radio`: radio button list with single selection.
-     * `checkbox`: checkbox list with multiple selection.
-     * `menu`: menu list with single selection.
+     * The type of the menu, omit to get a regular vertical menu.
+     * Available types are:
+     * `menu`: regular vertical menu.
      */
     @Prop()
     public type: MenuListType;
