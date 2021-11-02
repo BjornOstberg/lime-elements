@@ -1,4 +1,4 @@
-export interface ListItem<T = any> {
+export interface MenuListItem<T = any> {
     /**
      * Text to display in the list item.
      */
@@ -37,7 +37,7 @@ export interface ListItem<T = any> {
     /**
      * List of actions to display as a menu at the end of the item
      */
-    actions?: Array<ListItem | ListSeparator>;
+    actions?: Array<MenuListItem | ListSeparator>;
 }
 
 export interface ListSeparator {

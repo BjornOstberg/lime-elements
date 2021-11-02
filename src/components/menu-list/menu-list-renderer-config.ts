@@ -1,9 +1,9 @@
-import { IconSize, ListType } from '@limetech/lime-elements';
+import { IconSize, MenuListType } from '@limetech/lime-elements';
 
-export interface ListRendererConfig {
+export interface MenuListRendererConfig {
     isMenu?: boolean;
     isOpen?: boolean;
     badgeIcons?: boolean;
-    type?: ListType;
+    type?: MenuListType;
     iconSize?: IconSize;
 }

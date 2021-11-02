@@ -1,8 +1,8 @@
 import {
     IconSize,
-    ListItem,
+    MenuListItem,
     ListSeparator,
-    ListType,
+    MenuListType,
 } from '@limetech/lime-elements';
 import { MDCList, MDCListActionEvent } from '@material/list';
 import { MDCMenu, MDCMenuItemEvent } from '@material/menu';
@@ -19,8 +19,8 @@ import {
     Prop,
     Watch,
 } from '@stencil/core';
-import { ListRenderer } from './list-renderer';
-import { ListRendererConfig } from './list-renderer-config';
+import { MenuListRenderer } from './menu-list-renderer';
+import { MenuListRendererConfig } from './menu-list-renderer-config';
 
 const { ACTION_EVENT } = listStrings;
 const { SELECTED_EVENT } = menuStrings;
@@ -41,16 +41,16 @@ const { SELECTED_EVENT } = menuStrings;
  * @exampleComponent limel-example-list-grid
  */
 @Component({
-    tag: 'limel-list',
+    tag: 'limel-menu-list',
     shadow: true,
-    styleUrl: 'list.scss',
+    styleUrl: 'menu-list.scss',
 })
-export class List {
+export class MenuList {
     /**
      * List of items to display
      */
     @Prop()
-    public items: Array<ListItem | ListSeparator>;
+    public items: Array<MenuListItem | ListSeparator>;
 
     /**
      * Set to `true` if the list should display larger icons with a background
@@ -72,7 +72,7 @@ export class List {
      * `menu`: menu list with single selection.
      */
     @Prop()
-    public type: ListType;
+    public type: MenuListType;
 
     /**
      * By default, lists will display 3 lines of text, and then truncate the rest.
@@ -84,10 +84,10 @@ export class List {
     @Prop() maxLinesSecondaryText: number = 3;
 
     @Element()
-    private element: HTMLLimelListElement;
+    private element: HTMLLimelMenuListElement;
 
-    private config: ListRendererConfig;
-    private listRenderer = new ListRenderer();
+    private config: MenuListRendererConfig;
+    private MenuListRenderer = new MenuListRenderer();
     private mdcList: MDCList;
     private mdcMenu: MDCMenu;
     private multiple: boolean;
@@ -97,13 +97,13 @@ export class List {
      * Fired when a new value has been selected from the list. Only fired if selectable is set to true
      */
     @Event()
-    private change: EventEmitter<ListItem | ListItem[]>;
+    private change: EventEmitter<MenuListItem | MenuListItem[]>;
 
     /**
      * Fired when an action has been selected from the action menu of a list item
      */
     @Event()
-    protected select: EventEmitter<ListItem | ListItem[]>;
+    protected select: EventEmitter<MenuListItem | MenuListItem[]>;
 
     public connectedCallback() {
         this.setup();
@@ -128,7 +128,7 @@ export class List {
             maxLinesSecondaryText = 1;
         }
 
-        const html = this.listRenderer.render(this.items, this.config);
+        const html = this.MenuListRenderer.render(this.items, this.config);
 
         if (this.type === 'menu') {
             return <div class="mdc-menu mdc-menu-surface">{html}</div>;
@@ -156,19 +156,19 @@ export class List {
             return;
         }
 
-        const listItems = this.items.filter(this.isListItem);
+        const MenuListItems = this.items.filter(this.isMenuListItem);
 
         if (!this.multiple) {
-            this.mdcList.selectedIndex = listItems.findIndex(
-                (item: ListItem) => item.selected
+            this.mdcList.selectedIndex = MenuListItems.findIndex(
+                (item: MenuListItem) => item.selected
             );
 
             return;
         }
 
-        this.mdcList.selectedIndex = listItems
-            .filter((item: ListItem) => item.selected)
-            .map((item: ListItem) => listItems.indexOf(item));
+        this.mdcList.selectedIndex = MenuListItems
+            .filter((item: MenuListItem) => item.selected)
+            .map((item: MenuListItem) => MenuListItems.indexOf(item));
     }
 
     private setup = () => {
@@ -266,12 +266,12 @@ export class List {
     };
 
     private handleSingleSelect = (index: number) => {
-        const listItems = this.items.filter(this.isListItem) as ListItem[];
-        if (listItems[index].disabled) {
+        const MenuListItems = this.items.filter(this.isMenuListItem) as MenuListItem[];
+        if (MenuListItems[index].disabled) {
             return;
         }
 
-        const selectedItem: ListItem = listItems.find((item: ListItem) => {
+        const selectedItem: MenuListItem = MenuListItems.find((item: MenuListItem) => {
             return !!item.selected;
         });
 
@@ -279,25 +279,25 @@ export class List {
             this.change.emit({ ...selectedItem, selected: false });
         }
 
-        if (listItems[index] !== selectedItem) {
+        if (MenuListItems[index] !== selectedItem) {
             if (this.type === 'menu') {
-                this.change.emit({ ...listItems[index], selected: false });
+                this.change.emit({ ...MenuListItems[index], selected: false });
 
                 return;
             }
 
-            this.change.emit({ ...listItems[index], selected: true });
+            this.change.emit({ ...MenuListItems[index], selected: true });
         }
     };
 
     private handleMultiSelect = (index: number) => {
-        const listItems = this.items.filter(this.isListItem) as ListItem[];
-        if (listItems[index].disabled) {
+        const MenuListItems = this.items.filter(this.isMenuListItem) as MenuListItem[];
+        if (MenuListItems[index].disabled) {
             return;
         }
 
-        const selectedItems: ListItem[] = listItems
-            .filter((item: ListItem, listIndex: number) => {
+        const selectedItems: MenuListItem[] = MenuListItems
+            .filter((item: MenuListItem, listIndex: number) => {
                 if (listIndex === index) {
                     // This is the item that was selected or deselected,
                     // so we negate its previous selection status.
@@ -307,14 +307,14 @@ export class List {
                 // This is an item that didn't change, so we keep its selection status.
                 return item.selected;
             })
-            .map((item: ListItem) => {
+            .map((item: MenuListItem) => {
                 return { ...item, selected: true };
             });
 
         this.change.emit(selectedItems);
     };
 
-    private isListItem = (item: ListItem): boolean => {
+    private isMenuListItem = (item: MenuListItem): boolean => {
         return !('separator' in item);
     };
 }

@@ -1,14 +1,14 @@
-import { ListItem, ListSeparator } from '@limetech/lime-elements';
+import { MenuListItem, ListSeparator } from '@limetech/lime-elements';
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('limel-list', () => {
+describe('limel-menu-list', () => {
     let page;
     let limelList;
     let innerList;
     beforeEach(async () => {
-        page = await newE2EPage({ html: '<limel-list></limel-list>' });
-        limelList = await page.find('limel-list');
-        innerList = await page.find('limel-list>>>ul');
+        page = await newE2EPage({ html: '<limel-menu-list></limel-menu-list>' });
+        limelList = await page.find('limel-menu-list');
+        innerList = await page.find('limel-menu-list>>>ul');
     });
 
     describe('without items', () => {
@@ -20,7 +20,7 @@ describe('limel-list', () => {
     });
 
     describe('with an item', () => {
-        let items: Array<ListItem | ListSeparator>;
+        let items: Array<MenuListItem | ListSeparator>;
         beforeEach(async () => {
             items = [{ text: 'item 1' }];
             await limelList.setProperty('items', items);
@@ -53,7 +53,7 @@ describe('limel-list', () => {
     });
 
     describe('with a disabled item', () => {
-        let items: Array<ListItem | ListSeparator>;
+        let items: Array<MenuListItem | ListSeparator>;
         beforeEach(async () => {
             items = [{ text: 'item 1', disabled: true }];
             await limelList.setProperty('items', items);
@@ -80,7 +80,7 @@ describe('limel-list', () => {
     });
 
     describe('with multiple items', () => {
-        let items: Array<ListItem | ListSeparator>;
+        let items: Array<MenuListItem | ListSeparator>;
         beforeEach(async () => {
             items = [
                 { text: 'item 1' },
@@ -118,7 +118,7 @@ describe('limel-list', () => {
     });
 
     describe('with at least one item with secondary text', () => {
-        let items: Array<ListItem | ListSeparator>;
+        let items: Array<MenuListItem | ListSeparator>;
         beforeEach(async () => {
             items = [
                 { text: 'item 1' },
@@ -192,10 +192,10 @@ describe('limel-list', () => {
             let items;
             beforeEach(async () => {
                 page = await newE2EPage({
-                    html: '<limel-list type="selectable"></limel-list>',
+                    html: '<limel-menu-list type="selectable"></limel-menu-list>',
                 });
-                limelList = await page.find('limel-list');
-                innerList = await page.find('limel-list>>>ul');
+                limelList = await page.find('limel-menu-list');
+                innerList = await page.find('limel-menu-list>>>ul');
                 items = [{ text: 'item 1' }];
                 await limelList.setProperty('items', items);
                 await page.waitForChanges();
@@ -235,10 +235,10 @@ describe('limel-list', () => {
             let items;
             beforeEach(async () => {
                 page = await newE2EPage({
-                    html: '<limel-list type="menu"></limel-list>',
+                    html: '<limel-menu-list type="menu"></limel-menu-list>',
                 });
-                limelList = await page.find('limel-list');
-                innerList = await page.find('limel-list>>>ul');
+                limelList = await page.find('limel-menu-list');
+                innerList = await page.find('limel-menu-list>>>ul');
                 items = [{ text: 'item 1' }];
                 await limelList.setProperty('items', items);
                 await page.waitForChanges();

@@ -1,16 +1,16 @@
-import { ListItem, ListSeparator, MenuItem } from '@limetech/lime-elements';
+import { MenuListItem, ListSeparator, MenuItem } from '@limetech/lime-elements';
 import { h } from '@stencil/core';
 import { CheckboxTemplate } from '../checkbox/checkbox.template';
-import { ListRendererConfig } from './list-renderer-config';
+import { MenuListRendererConfig } from './menu-list-renderer-config';
 import { RadioButtonTemplate } from './radio-button/radio-button.template';
 
-export class ListRenderer {
-    private defaultConfig: ListRendererConfig = {
+export class MenuListRenderer {
+    private defaultConfig: MenuListRendererConfig = {
         isOpen: true,
         badgeIcons: false,
     };
 
-    private config: ListRendererConfig;
+    private config: MenuListRendererConfig;
 
     private hasIcons: boolean;
     private twoLines: boolean;
@@ -20,8 +20,8 @@ export class ListRenderer {
     private applyTabIndexToItemAtIndex: number;
 
     public render(
-        items: Array<ListItem | ListSeparator | MenuItem>,
-        config: ListRendererConfig = {}
+        items: Array<MenuListItem | ListSeparator | MenuItem>,
+        config: MenuListRendererConfig = {}
     ) {
         items = items || [];
         this.config = { ...this.defaultConfig, ...config };
@@ -74,29 +74,29 @@ export class ListRenderer {
                 role={role}
                 aria-orientation="vertical"
             >
-                {items.map(this.renderListItem)}
+                {items.map(this.renderMenuListItem)}
             </ul>
         );
     }
 
     /**
-     * Determine which ListItem should have the `tab-index` attribute set,
-     * and return the index at which that ListItem is located in `items`.
+     * Determine which MenuListItem should have the `tab-index` attribute set,
+     * and return the index at which that MenuListItem is located in `items`.
      * Returns `undefined` if no item should have the attribute set.
      * See https://github.com/material-components/material-components-web/tree/e66a43a75fef4f9179e24856649518e15e279a04/packages/mdc-list#accessibility
      *
-     * @param {Array<ListItem | ListSeparator | MenuItems>} items the items of the list, including any `ListSeparator`:s
+     * @param {Array<MenuListItem | ListSeparator | MenuItems>} items the items of the list, including any `ListSeparator`:s
      * @returns {number} the index as per the description
      */
     private getIndexForWhichToApplyTabIndex = (
-        items: Array<ListItem | ListSeparator | MenuItem>
+        items: Array<MenuListItem | ListSeparator | MenuItem>
     ) => {
         let result;
         for (let i = 0, max = items.length; i < max; i += 1) {
             if ('separator' in items[i]) {
                 // Ignore ListSeparator
             } else {
-                const item = items[i] as ListItem<any>;
+                const item = items[i] as MenuListItem<any>;
                 if (item.selected) {
                     result = i;
                     break;
@@ -116,12 +116,12 @@ export class ListRenderer {
     /**
      * Render a single list item
      *
-     * @param {ListItem | ListSeparator | MenuItems} item the item to render
+     * @param {MenuListItem | ListSeparator | MenuItems} item the item to render
      * @param {number} index the index the item had in the `items` array
      * @returns {HTMLElement} the list item
      */
-    private renderListItem = (
-        item: ListItem | ListSeparator | MenuItem,
+    private renderMenuListItem = (
+        item: MenuListItem | ListSeparator | MenuItem,
         index: number
     ) => {
         if ('separator' in item) {
@@ -129,7 +129,7 @@ export class ListRenderer {
         }
 
         if (['radio', 'checkbox'].includes(this.config.type)) {
-            return this.renderVariantListItem(this.config, item, index);
+            return this.renderVariantMenuListItem(this.config, item, index);
         }
 
         const classNames = {
@@ -163,10 +163,10 @@ export class ListRenderer {
     /**
      * Render the text of the list item
      *
-     * @param {ListItem | MenuItem} item the list item
+     * @param {MenuListItem | MenuItem} item the list item
      * @returns {HTMLElement | string} the text for the list item
      */
-    private renderText = (item: ListItem | MenuItem) => {
+    private renderText = (item: MenuListItem | MenuItem) => {
         if (this.isSimpleItem(item)) {
             return (
                 <span class="mdc-deprecated-list-item__text">{item.text}</span>
@@ -188,7 +188,7 @@ export class ListRenderer {
         );
     };
 
-    private renderCommandText = (item: ListItem | MenuItem) => {
+    private renderCommandText = (item: MenuListItem | MenuItem) => {
         if (!('commandText' in item)) {
             return;
         }
@@ -200,7 +200,7 @@ export class ListRenderer {
         );
     };
 
-    private isSimpleItem = (item: ListItem | MenuItem): boolean => {
+    private isSimpleItem = (item: MenuListItem | MenuItem): boolean => {
         if ('commandText' in item) {
             return false;
         }
@@ -215,11 +215,11 @@ export class ListRenderer {
     /**
      * Render an icon for a list item
      *
-     * @param {ListRendererConfig} config the config object, passed on from the `renderListItem` function
-     * @param {ListItem} item the list item
+     * @param {MenuListRendererConfig} config the config object, passed on from the `renderMenuListItem` function
+     * @param {MenuListItem} item the list item
      * @returns {HTMLElement} the icon element
      */
-    private renderIcon = (config: ListRendererConfig, item: ListItem) => {
+    private renderIcon = (config: MenuListRendererConfig, item: MenuListItem) => {
         const style: any = {};
         if (item.iconColor) {
             if (config.badgeIcons) {
@@ -252,7 +252,7 @@ export class ListRenderer {
         return <hr class={classes} />;
     };
 
-    private renderActionMenu = (actions: Array<ListItem | ListSeparator>) => {
+    private renderActionMenu = (actions: Array<MenuListItem | ListSeparator>) => {
         if (!actions || actions.length === 0) {
             return;
         }
@@ -268,9 +268,9 @@ export class ListRenderer {
         );
     };
 
-    private renderVariantListItem = (
-        config: ListRendererConfig,
-        item: ListItem,
+    private renderVariantMenuListItem = (
+        config: MenuListRendererConfig,
+        item: MenuListItem,
         index: number
     ) => {
         let itemTemplate;
@@ -312,14 +312,14 @@ export class ListRenderer {
                 data-index={index}
                 {...attributes}
             >
-                {this.renderVariantListItemContent(config, item, itemTemplate)}
+                {this.renderVariantMenuListItemContent(config, item, itemTemplate)}
             </li>
         );
     };
 
-    private renderVariantListItemContent = (
-        config: ListRendererConfig,
-        item: ListItem | MenuItem,
+    private renderVariantMenuListItemContent = (
+        config: MenuListRendererConfig,
+        item: MenuListItem | MenuItem,
         itemTemplate: any
     ) => {
         if (this.hasIcons) {
